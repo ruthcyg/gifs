@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Managers and QuerySets in Django</title>
+  <style>
+    /* General Layout */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f8fc;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    /* Container Styles */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 20px;
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    /* Header with Icon */
+    .card-header {
+      display: flex;
+      align-items: center;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+
+    .card-header img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    /* Code Block Styles */
+    .code {
+      background-color: #f0f7ff;
+      border-left: 4px solid #0077b6;
+      padding: 10px;
+      margin: 10px 0;
+      font-family: monospace;
+      font-size: 0.9em;
+      color: #00509e;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+
+    /* Checkpoint Box */
+    .think-box {
+      background-color: #ffe5b4;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      color: #d97706;
+      font-weight: bold;
+      font-size: 0.9em;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Card 1 -->
+  <div class="card">
+    
+<footer>
+    &copy; Ruth Ewho
+  </footer>
+<!-- Card 2 -->
+<div class="card-header">
+    <img src="https://img.icons8.com/ios-filled/50/0077b6/filter--v1.png" alt="Filter Icon">
+    Using QuerySet.as_manager()
+  </div>
+  <p>Imagine building a course management system. You’d want quick filters for active courses or beginner levels. <code>as_manager()</code> lets you create custom filters directly in your models.</p>
+  
+  <pre class="code">
+from django.db import models
+
+class CourseQuerySet(models.QuerySet):
+  def active(self):
+      return self.filter(status="active")
+      
+class Course(models.Model):
+  name = models.CharField(max_length=255)
+  status = models.CharField(max_length=50)
+  
+  objects = CourseQuerySet.as_manager()
+  </pre>
+  
+  <div class="think-box">
+    Think Box: What other common filters might your app need?
+  </div>
+</div>
+
+
+  
+  </div>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+

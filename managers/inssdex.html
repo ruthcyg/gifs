@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Custom Migration Operations</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #4A90E2;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Main container for all sections */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px; /* Limit width for better alignment */
+            margin: auto;
+        }
+
+        /* Box styling for each section */
+        .box {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 15px;
+            text-align: center;
+            width: 100%; /* Full width to accommodate grid */
+            transition: transform 0.3s;
+        }
+
+        /* Grid layout for operations */
+        .operations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+            gap: 15px; /* Space between boxes */
+            margin: 15px 0; /* Margin above and below the grid */
+        }
+
+        /* Individual operation boxes */
+        .operation-box {
+            background: #e8f4fa;
+            border-left: 5px solid #4A90E2;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Prevent overflow for animations */
+            animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Emoji styling */
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: inline-block; /* Allow transformation */
+            animation: bounce 1.5s infinite; /* Automatic bouncing animation */
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0); /* Original position */
+            }
+            50% {
+                transform: translateY(-10px); /* Move up */
+            }
+        }
+
+        /* Arrow styling for downwards */
+        .arrow {
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #4A90E2; /* Downward pointing */
+            margin: 10px auto; /* Center align the arrow */
+        }
+
+        /* Conclusion box styling */
+        .conclusion-box {
+            background-color: #4A90E2;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        /* Button styling */
+        .button {
+            background-color: white;
+            color: #4A90E2;
+            border: 2px solid #4A90E2;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 1rem;
+        }
+
+        .button:hover {
+            background-color: #85FFBD;
+            color: white;
+        }
+
+        /* Footer styling */
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+            position: relative;
+            padding: 20px 0;
+            width: 100%;
+            background: #4A90E2;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        /* Decorative elements for footer */
+        footer::before {
+            content: '✨';
+            position: absolute;
+            left: 10px;
+            top: -10px;
+            font-size: 2rem;
+        }
+
+        footer::after {
+            content: '✨';
+            position: absolute;
+            right: 10px;
+            bottom: -10px;
+            font-size: 2rem;
+        }
+
+        .copyright-text {
+            margin: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>OperationCategory in Django Migration 🌟</h1>
+
+    <div class="main-container">
+        <div class="box">
+            <h2>Operation Categories</h2>
+            <div class="operations-grid">
+                <div class="operation-box">
+                    <div class="emoji">➕</div>
+                    <strong>ADDITION (+)</strong>: Adding a new entity
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">➖</div>
+                    <strong>REMOVAL (-)</strong>: Removing an entity
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">🔄</div>
+                    <strong>ALTERATION (~)</strong>: Modifying an entity
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">🐍</div>
+                    <strong>PYTHON (p)</strong>: Running custom Python code
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">🗄️</div>
+                    <strong>SQL (s)</strong>: Executing raw SQL commands
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">❓</div>
+                    <strong>MIXED (?)</strong>: A combination of types
+                </div>
+            </div>
+        </div>
+
+  
+    </div>
+
+    <footer class="conclusion-box">
+        <p class="copyright-text">&copy; 2024 Ruth Ewho . All rights reserved.</p>
+        <p class="copyright-text">Crafted with 💙 for the Django community.</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+

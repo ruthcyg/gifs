@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django `raw()` Method Explanation</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;  /* Light Gray for neutrality and calmness */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 40px;
+            background-color: #fff;  /* White for clarity and simplicity */
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-size: 2.4em;
+            color: #007bff;  /* Blue for professionalism and trust */
+            margin-bottom: 30px;
+        }
+
+        .method-signature {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .method-signature span {
+            color: #007bff;  /* Blue for clarity */
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: #e9ecef;  /* Light Gray for calmness */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #28a745;  /* Green border to evoke harmony and balance */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #28a745;  /* Green for balance and trust */
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .code {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f9fa;  /* Light Gray for clarity */
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            color: #495057;
+            word-wrap: break-word;
+        }
+
+        /* Animation for fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Smooth transition for content visibility */
+        .card-content {
+            display: none;
+            margin-top: 15px;
+            font-size: 1em;
+            color: #666;
+            text-align: left;
+        }
+
+        .card.active .card-content {
+            display: block;
+        }
+
+        /* Footer style */
+        footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Understanding Django's `raw()` Method</h1>
+        <p class="method-signature">
+            Method Signature: <span>Manager.raw(raw_query, params=(), translations=None)</span>
+        </p>
+
+        <div class="card-container">
+
+            <!-- Card 1: raw_query -->
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-title">raw_query: SQL Query String</div>
+                <div class="card-content">
+                    <p><strong>Description:</strong> This parameter is the actual SQL query string that Django will execute. You can use any valid SQL query here, including complex ones.</p>
+                    <div class="code">
+                        SELECT * FROM myapp_person WHERE first_name = %s
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: params -->
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-title">params: SQL Query Parameters</div>
+                <div class="card-content">
+                    <p><strong>Description:</strong> A tuple or dictionary containing the parameters that will be passed into the SQL query. This ensures safety from SQL injection attacks.</p>
+                    <div class="code">
+                        ('John',)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: translations -->
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-title">translations: Field Renaming</div>
+                <div class="card-content">
+                    <p><strong>Description:</strong> This optional parameter allows you to rename database fields to match your Django model fields. It's helpful when the database schema doesn't follow Django's convention.</p>
+                    <div class="code">
+                        {"first_name": "first_name_model"}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>&copy; Ruth Ewho.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle visibility of card content
+        function toggleCard(card) {
+            card.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

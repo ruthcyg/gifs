@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Managers Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      color: #2d2d2d;
+    }
+    h1 {
+      color: #2e3b4e;
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #d4e2f4;
+    }
+    .section {
+      width: 90%;
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e6f1;
+      margin-bottom: 30px;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 22px;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Styling for each bullet point box */
+    .bullet-point {
+      display: flex;
+      align-items: center;
+      background-color: #f4f8fc;
+      border: 1px solid #cde4f5;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .bullet-point:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 149, 246, 0.2);
+      background-color: #e8f3fb;
+    }
+
+    /* Emoji Styling */
+    .emoji {
+      font-size: 30px;
+      margin-right: 12px;
+      animation: bounce 1s infinite alternate;
+      transition: transform 0.2s;
+    }
+    .emoji:hover {
+      transform: scale(1.2);
+    }
+
+    /* Bounce animation */
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-5px); }
+    }
+
+    /* Selection Animation */
+    .emoji.select {
+      animation: swing 1s infinite;
+    }
+    @keyframes swing {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(15deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* Batch Animation */
+    .emoji.batch {
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Text Styling */
+    .text-content {
+      font-size: 18px;
+      color: #333;
+    }
+    .text-content strong {
+      color: #0b75c9;
+    }
+
+    /* Footer Styling */
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #7a7a7a;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Understanding and Utilizing Django's <br> Default and Base Managers 📚</h1>
+
+<div class="section">
+  <h2 class="title">Optimizations ⚡<footer>
+    &copy; Ruth Ewho
+  </footer></h2>
+  
+  <div class="bullet-point">
+    <span class="emoji select">🔍</span>
+    <div class="text-content">
+      <strong>Leverage Selective Fields:</strong> Use <code>only()</code> or <code>defer()</code> on QuerySets when retrieving large numbers of records to limit fields and improve query performance. 
+      <br><span class="emoji">✋</span>Selecting the fields you need!
+    </div>
+  </div>
+  
+  <div class="bullet-point">
+    <span class="emoji batch">📦</span>
+    <div class="text-content">
+      <strong>Batch Operations:</strong> Use <code>bulk_create()</code> and <code>bulk_update()</code> for inserting/updating multiple records, reducing database calls and saving time. 
+      <br><span class="emoji">📋</span>Batching operations for efficiency!
+    </div>
+  </div>
+  
+  <div class="bullet-point">
+    <span class="emoji">🔗</span>
+    <div class="text-content">
+      <strong>Prefetch Related Data:</strong> Use <code>select_related()</code> and <code>prefetch_related()</code> when querying related models, especially with frequently accessed relationships (e.g., patients and records).
+    </div>
+  </div>
+  
+</div>
+
+
+</body>
+</html>
+

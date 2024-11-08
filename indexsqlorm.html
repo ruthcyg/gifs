@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Raw SQL in Django</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .card-header {
+            
+            color: rgb(23, 29, 77);
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .method {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .method:last-child {
+            border-bottom: none;
+        }
+        .method-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 1.2em;
+            color: #333;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .method-header:hover {
+            background-color: #45A049;
+        }
+        .method-content {
+            display: none;
+            padding: 15px;
+            background-color: #f9f9f9;
+            font-size: 0.9em;
+            color: #444;
+        }
+        code {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #eee;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .icon {
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .method.active .icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <footer>
+        &copy; Ruth Ewho
+      </footer>
+    <div class="card-header">Using Raw SQL in Django: Two Simple Methods</div>
+    <div class="method" onclick="toggleContent(this)">
+        <div class="method-header">
+            <span>1. Manager.raw()</span>
+            <span class="icon">&#9660;</span>
+        </div>
+        <div class="method-content">
+            <p>This method lets you write custom SQL to fetch data, returning model instances, which helps integrate raw SQL with Django's ORM.</p>
+            <code>
+from myapp.models import MyModel
+
+for item in MyModel.objects.raw('SELECT * FROM myapp_mymodel'):
+    print(item)
+            </code>
+        </div>
+    </div>
+
+    <div class="method" onclick="toggleContent(this)">
+        <div class="method-header">
+            <span>2. Executing SQL Directly</span>
+            <span class="icon">&#9660;</span>
+        </div>
+        <div class="method-content">
+            <p>This method allows you to execute SQL directly when you don’t need results as model instances, bypassing the ORM layer.</p>
+            <code>
+from django.db import connection
+
+with connection.cursor() as cursor:
+    cursor.execute("SELECT COUNT(*) FROM myapp_mymodel")
+    row = cursor.fetchone()
+    print("Number of items:", row[0])
+            </code>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleContent(element) {
+        element.classList.toggle("active");
+        const content = element.querySelector(".method-content");
+        content.style.display = content.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Django's from_queryset()</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8/QSA1Bd7RZEd4+z4zTCCDb9irCMt3yw5l/RE" crossorigin="anonymous">
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fc;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      padding: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    /* Card Style */
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Card Header with Icon */
+    .card-header {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background: linear-gradient(120deg, #0077b6, #48cae4);
+      color: #ffffff;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .card-header i {
+      margin-right: 10px;
+      font-size: 1.5em;
+    }
+
+    /* Card Content */
+    .card-content {
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+    }
+
+    .card-content p {
+      margin: 10px 0;
+    }
+
+    .highlight {
+      background-color: #f1f9ff;
+      border-left: 5px solid #48cae4;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+
+    /* Code Block Styling */
+    .code {
+      background-color: #f8f9fa;
+      border-left: 3px solid #0077b6;
+      padding: 15px;
+      margin: 10px 0;
+      font-family: monospace;
+      font-size: 0.9em;
+      color: #00509e;
+      border-radius: 5px;
+    }
+
+    /* Expand Button */
+    .expand-btn {
+      background-color: #0077b6;
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border-top: 1px solid #0077b6;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    .expand-btn:hover {
+      background-color: #00509e;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Card 1: Introduction to from_queryset() -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-lightbulb"></i> Introduction to from_queryset()
+    </div>
+    <div class="card-content">
+      <p>The <code>from_queryset()</code> method in Django is a powerful tool for creating custom managers that integrate methods from a custom queryset. This approach is beneficial for larger applications as it keeps query and business logic organized.</p>
+      <div class="highlight">
+        Key Benefit: Encapsulates query logic, separates concerns, and offers flexibility in model interactions.
+      </div>
+    </div>
+    <button class="expand-btn" onclick="toggleCardContent(this)">Learn More</button>
+  </div>
+
+  <!-- Card 2: Encapsulation of Query Logic -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-shield-alt"></i> Encapsulation of Query Logic
+    </div>
+    <div class="card-content">
+      <p>Encapsulating complex query patterns within custom querysets promotes reusability and keeps your models clean.</p>
+      <pre class="code">
+class ActiveUsersQuerySet(models.QuerySet):
+    def active(self):
+        return self.filter(is_active=True)
+        
+class User(models.Model):
+    objects = ActiveUsersQuerySet.as_manager()
+      </pre>
+      <div class="highlight">
+        Practical Tip: Use <code>.as_manager()</code> to make custom queryset methods available directly on the model’s manager.
+      </div>
+    </div>
+    <button class="expand-btn" onclick="toggleCardContent(this)">Learn More</button>
+  </div>
+
+  <!-- Card 3: Separation of Concerns -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-object-group"></i> Separation of Concerns
+    </div>
+    <div class="card-content">
+      <p>Separating data retrieval logic and business logic makes code organized and easier to maintain.</p>
+      <pre class="code">
+class PublishedPostsQuerySet(models.QuerySet):
+    def published(self):
+        return self.filter(status='published')
+
+class Post(models.Model):
+    objects = PublishedPostsQuerySet.as_manager()
+      </pre>
+      <div class="highlight">
+        Best Practice: Define filtering methods in the queryset, and business logic in the manager.
+      </div>
+    </div>
+    <button class="expand-btn" onclick="toggleCardContent(this)">Learn More</button>
+  </div>
+
+  <!-- Card 4: Flexibility and Customization -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-cogs"></i> Flexibility and Customization
+    </div>
+    <div class="card-content">
+      <p>Combining manager and queryset methods enables highly customized model interactions.</p>
+      <pre class="code">
+class CourseQuerySet(models.QuerySet):
+    def active_courses(self):
+        return self.filter(is_active=True)
+
+class CourseManager(models.Manager):
+    def notify_instructors(self):
+        for course in self.get_queryset().active_courses():
+            # Notification logic here
+
+class Course(models.Model):
+    objects = CourseManager.from_queryset(CourseQuerySet)()
+      </pre>
+      <div class="highlight">
+        Example: Use <code>from_queryset()</code> to merge manager and queryset functionalities seamlessly.
+      </div>
+    </div>
+    <button class="expand-btn" onclick="toggleCardContent(this)">Learn More</button>
+  </div>
+</div>
+
+<script>
+  function toggleCardContent(button) {
+    const cardContent = button.previousElementSibling;
+    if (cardContent.style.display === "none" || cardContent.style.display === "") {
+      cardContent.style.display = "flex";
+      button.innerText = "Show Less";
+    } else {
+      cardContent.style.display = "none";
+      button.innerText = "Learn More";
+    }
+  }
+
+  // Initialize cards to be hidden by default
+  document.querySelectorAll(".card-content").forEach(content => content.style.display = "none");
+</script>
+</body>
+</html>
+

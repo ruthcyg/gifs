@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Managers Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      color: #2d2d2d;
+    }
+    h1 {
+      color: #2e3b4e;
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #d4e2f4;
+    }
+    .section {
+      width: 90%;
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e6f1;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 22px;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Styling for each bullet point box */
+    .bullet-point {
+      display: flex;
+      align-items: center;
+      background-color: #f4f8fc;
+      border: 1px solid #cde4f5;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .bullet-point:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 149, 246, 0.2);
+      background-color: #e8f3fb;
+    }
+
+    /* Emoji Styling */
+    .emoji {
+      font-size: 26px;
+      margin-right: 12px;
+      animation: pulse 1.5s infinite alternate;
+      color: #0b75c9;
+      transition: transform 0.2s;
+    }
+    .emoji:hover {
+      transform: scale(1.3);
+    }
+
+    /* Pulse animation */
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.2); }
+    }
+
+    /* Text Styling */
+    .text-content {
+      font-size: 18px;
+      color: #333;
+    }
+    .text-content strong {
+      color: #0b75c9;
+    }
+
+    /* Footer Styling */
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #7a7a7a;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Understanding and Utilizing Django's <br>Default and Base Managers 📚</h1>
+
+<div class="section">
+  <h2 class="title">Best Practices ✨</h2>
+  
+  <div class="bullet-point">
+    <span class="emoji">⚙️</span>
+    <div class="text-content">
+      <strong>Set an Explicit Default Manager:</strong> Always define the default Manager (<code>default_manager_name</code>) if you use multiple Managers to avoid unintended data filtering in Django operations like <code>dumpdata</code>.
+    </div>
+  </div>
+  
+  <div class="bullet-point">
+    <span class="emoji">🔒</span>
+    <div class="text-content">
+      <strong>Avoid Filtering in Base Managers:</strong> Ensure <code>get_queryset()</code> in the base Manager (<code>base_manager_name</code>) does not filter data, allowing complete data retrieval for related objects.
+    </div>
+  </div>
+  
+  <div class="bullet-point">
+    <span class="emoji">🌐</span>
+    <div class="text-content">
+      <strong>Use Custom QuerySets for Complex Filtering:</strong> Define custom QuerySets for specific roles, statuses, or record types, making your code modular and readable.
+    </div>
+  </div>
+  
+</div>
+
+<footer>
+  &copy; Ruth Ewho
+</footer>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When to Use Raw SQL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .accordion {
+            width: 90%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .accordion-item {
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        .accordion-header {
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        .accordion-header:hover {
+            background-color: #45A049;
+        }
+        .accordion-content {
+            padding: 15px;
+            display: none;
+            background-color: #f9f9f9;
+            color: #555;
+        }
+        .icon {
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .accordion-item.active .icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="accordion">
+    <h1>Why Use Raw SQL?</h1>
+    <footer>
+        &copy; Ruth Ewho
+      </footer>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+        <div class="accordion-header">
+            <span>Custom Queries</span>
+            <span class="icon">&#9660;</span>
+        </div>
+        <div class="accordion-content">
+            If the ORM doesn’t cover your specific need, raw SQL gives you full control over the database query, allowing you to write exactly what you need.
+        </div>
+    </div>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+        <div class="accordion-header">
+            <span>Optimizing Performance</span>
+            <span class="icon">&#9660;</span>
+        </div>
+        <div class="accordion-content">
+            Raw SQL can sometimes be faster, especially for highly optimized queries where the ORM might add unnecessary overhead.
+        </div>
+    </div>
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+        <div class="accordion-header">
+            <span>Complex Aggregations or Data Transformations</span>
+            <span class="icon">&#9660;</span>
+        </div>
+        <div class="accordion-content">
+            When dealing with big data or advanced analytics, raw SQL may help you go beyond ORM capabilities, providing a way to perform complex aggregations or transformations.
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleAccordion(element) {
+        element.classList.toggle("active");
+        const content = element.querySelector(".accordion-content");
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

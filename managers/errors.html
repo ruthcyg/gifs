@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Managers Errors & Solutions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      color: #2d2d2d;
+    }
+    h1 {
+      color: #2e3b4e;
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #d4e2f4;
+    }
+    .section {
+      width: 90%;
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e6f1;
+      margin-bottom: 10px;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 22px;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Styling for each error box */
+    .error-box {
+      display: flex;
+      align-items: center;
+      background-color: #f4f8fc;
+      border: 1px solid #cde4f5;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .error-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 149, 246, 0.2);
+      background-color: #e8f3fb;
+    }
+
+    /* Color for errors and solutions */
+    .error-content {
+      background-color: #ffeef0; /* Light red */
+      border: 1px solid #ffb3b3; /* Light red border */
+      padding: 10px;
+      border-radius: 10px;
+      flex-grow: 1;
+      margin-left: 10px;
+      color: #d30000; /* Dark red for error text */
+    }
+    .solution-content {
+      background-color: #e3f2fd; /* Light blue */
+      border: 1px solid #90caf9; /* Light blue border */
+      padding: 10px;
+      border-radius: 10px;
+      flex-grow: 1;
+      margin-left: 10px;
+      color: #0d47a1; /* Dark blue for solution text */
+    }
+
+    /* Emoji Styling */
+    .emoji {
+      font-size: 30px;
+      margin-right: 12px;
+      animation: bounce 1s infinite alternate;
+      transition: transform 0.2s;
+    }
+    .emoji:hover {
+      transform: scale(1.2);
+    }
+
+    /* Bounce animation */
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-5px); }
+    }
+
+    /* Footer Styling */
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #7a7a7a;
+    }
+  </style>
+</head>
+<body>
+
+
+
+
+<div class="section">
+    <h1>Common Errors & Solutions in Django Managers 🐍 <footer>
+        &copy; Ruth Ewho
+      </footer></h1>
+  
+  <div class="error-box">
+    <span class="emoji">❗️</span>
+    <div class="error-content">
+      <strong>Filtered Base Manager Issues:</strong> Incomplete data when accessing related objects (e.g., archived patients missing in doctor's records).
+    </div>
+    <div class="solution-content">
+      <strong>Solution:</strong> Use an unfiltered base Manager for all-inclusive data retrieval. <span class="emoji">📊</span> Access all data!
+    </div>
+  </div>
+  
+  <div class="error-box">
+    <span class="emoji">⚠️</span>
+    <div class="error-content">
+      <strong>Overriding get_queryset() Incorrectly:</strong> Restricting objects unintentionally due to aggressive filtering in get_queryset().
+    </div>
+    <div class="solution-content">
+      <strong>Solution:</strong> Carefully review get_queryset() filters in custom Managers to ensure they don't interfere with general queries. <span class="emoji">🧐</span> Review your filters!
+    </div>
+  </div>
+  
+  <div class="error-box">
+    <span class="emoji">🔄</span>
+    <div class="error-content">
+      <strong>Using Inconsistent Managers:</strong> Mixing objects and other Managers without standardization can cause confusion and unintended results.
+    </div>
+    <div class="solution-content">
+      <strong>Solution:</strong> Standardize Manager usage across the application and set clear naming conventions (e.g., all_objects for unrestricted queries). <span class="emoji">🔗</span> Keep it consistent!
+    </div>
+  </div>
+  
+</div>
+
+
+
+</body>
+</html>
+
+

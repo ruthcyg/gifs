@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polymorphic Models vs. Custom QuerySets</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+    }
+    .table-container {
+        max-width: 900px;
+        margin: auto;
+        overflow-x: auto;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+    th {
+        background-color: #4CAF50;
+        color: #fff;
+        border-top: 3px solid #4CAF50;
+        border-bottom: 3px solid #4CAF50;
+    }
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+    tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+    .details-row {
+        display: none;
+        background-color: #eaf3e9;
+    }
+    .toggle-button {
+        display: block;
+        width: 100%;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    .toggle-button:hover {
+        background-color: #45a049;
+    }
+    td::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        background-color: #4CAF50;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    tr:hover td::before {
+        opacity: 1;
+    }
+    .highlight {
+        border-left: 5px solid #4CAF50;
+    }
+</style>
+</head>
+<body>
+
+<div class="table-container">
+    <h2>Polymorphic Models vs. Custom QuerySets</h2>
+    <footer>
+        &copy; Ruth Ewho
+      </footer>
+    <button class="toggle-button" onclick="toggleDetails()">Toggle Advanced Details</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Polymorphic Models</th>
+                <th>Custom QuerySets</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="highlight">Purpose</td>
+                <td>Enables querying different model subclasses as a unified base class, useful for mixed types.</td>
+                <td>Encapsulates custom query logic for a model, making it reusable and chainable.</td>
+            </tr>
+            <tr>
+                <td class="highlight">Usage</td>
+                <td>Ideal when multiple model types (subclasses) share core fields and need unified querying with subclass-specific attributes.</td>
+                <td>Ideal for defining reusable filtering, ordering, or custom logic across a model’s queries.</td>
+            </tr>
+            <tr>
+                <td class="highlight">Implementation</td>
+                <td>Requires <code>django-polymorphic</code> library for polymorphic behavior.</td>
+                <td>Built directly into Django using <code>models.QuerySet</code>.</td>
+            </tr>
+            <tr>
+                <td class="highlight">Model Structure</td>
+                <td>Base model (abstract or concrete) with subclasses representing each specific type (e.g., TextPost, ImagePost, VideoPost).</td>
+                <td>Single model, but with multiple filters and methods to refine queries on it.</td>
+            </tr>
+            <tr>
+                <td class="highlight">Example Models</td>
+                <td><code>Post</code> (base) with subclasses like <code>TextPost</code>, <code>ImagePost</code>, etc., each with unique fields.</td>
+                <td>A model like <code>Post</code> with an active status or date filtering (e.g., <code>.active()</code>, <code>.recent()</code>).</td>
+            </tr>
+            <tr>
+                <td class="highlight">Example Querying</td>
+                <td>Queries on base model (e.g., <code>Post.objects.all()</code>) return instances of subclasses, allowing type-specific field access in a loop.</td>
+                <td>Custom methods (e.g., <code>.active()</code>, <code>.recent()</code>) provide specific filtered results that can be chained.</td>
+            </tr>
+            <tr class="details-row">
+                <td class="highlight">Advantages</td>
+                <td>- Simplifies working with mixed types under a single query.<br>- Automatically retrieves subclass instances for the base model query.</td>
+                <td>- Provides organized, reusable, and chainable filtering methods.<br>- Enhances readability and maintainability.</td>
+            </tr>
+            <tr class="details-row">
+                <td class="highlight">Disadvantages</td>
+                <td>- Adds complexity and requires an additional library.<br>- Can slow down queries on large datasets.</td>
+                <td>- Limited to a single model without subclass differentiation.<br>- Complexity may arise with too many methods.</td>
+            </tr>
+            <tr class="details-row">
+                <td class="highlight">Best Practices</td>
+                <td>- Use for mixed content types with core shared fields.<br>- Avoid over-complicating inheritance structures.</td>
+                <td>- Keep methods concise and focused.<br>- Test thoroughly for any performance impact on larger queries.</td>
+            </tr>
+            <tr class="details-row">
+                <td class="highlight">Example Use Cases</td>
+                <td>Content systems where a base type has multiple specific types (e.g., blog posts with text, image, video types).</td>
+                <td>Any model requiring common filters (e.g., active status, recent items, custom order).</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function toggleDetails() {
+        const detailsRows = document.querySelectorAll('.details-row');
+        detailsRows.forEach(row => {
+            row.style.display = row.style.display === 'table-row' ? 'none' : 'table-row';
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Managers in Django</title>
+    <style>
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Main content container */
+        .content-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Equal-width columns */
+            gap: 20px;
+            max-width: 600px; /* Ensures equal width overall */
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center text alignment in container */
+        }
+
+        /* Title styling */
+        h1 {
+            font-size: 1.5em;
+            color: #4A90E2;
+            margin-bottom: 15px;
+            grid-column: span 2; /* Spans the full width of container */
+            text-align: center;
+        }
+
+        /* Accordion item styling */
+        .accordion-item {
+            background-color: #f0f4ff;
+            border-radius: 5px;
+            padding: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: grid;
+            align-content: start;
+            text-align: center; /* Center-align text in each item */
+        }
+
+        /* Accordion content styling */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            font-size: 0.9em;
+            color: #555;
+            padding-top: 5px;
+        }
+
+        /* Open accordion content */
+        .accordion-content.open {
+            max-height: 100px;
+            margin-top: 5px;
+        }
+
+        /* Centered button styling */
+        .button-container {
+            grid-column: 1 / -1; /* Full width in grid */
+            text-align: center; /* Center-align within grid */
+            margin-top: 15px;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            width: 50%; /* Adjust width for better center alignment */
+        }
+
+        .action-button:hover {
+            background-color: #357ABD;
+        }
+
+        /* Copyright styling */
+        .copyright {
+            grid-column: span 2;
+            font-size: 0.8em;
+            color: #aaa;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-container">
+    <h1>Custom Managers in Django 📋</h1>
+
+    <!-- Accordion sections for each summary point -->
+    <div class="accordion-item">
+        <div class="title">🔍 What Are Managers?</div>
+        <div class="accordion-content">
+            Managers provide a powerful way to manage database queries in Django, allowing for organized and optimized query handling.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="title">⚙️ Custom vs. Default Managers</div>
+        <div class="accordion-content">
+            Rename the default `objects` Manager or create custom Managers to add extra methods or modify the initial QuerySet.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="title">🔄 Multiple Managers</div>
+        <div class="accordion-content">
+            Use multiple Managers to define different query capabilities on the same model, enabling efficient reuse.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="title">✅ When to Use</div>
+        <div class="accordion-content">
+            Ideal for common, reusable queries, default filters, and enhanced query functionality.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="title">🚫 When Not to Use</div>
+        <div class="accordion-content">
+            Avoid custom Managers for simple, rare, or highly dynamic queries. Alternatives like inline QuerySet chaining may be simpler.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="title">💡 Alternatives</div>
+        <div class="accordion-content">
+            Consider inline QuerySet chaining, CBV methods, or service layer functions for one-off or simpler queries.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="title">📝 Best Practices</div>
+        <div class="accordion-content">
+            Limit custom Managers, use descriptive method names, optimize with select_related, and ensure query flexibility.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="title">🚀 Optimizations</div>
+        <div class="accordion-content">
+            Use database indexes, fetch only necessary fields, apply caching for expensive queries, and leverage database functions.
+        </div>
+    </div>
+
+   <!-- Centered Action button -->
+   <div class="button-container">
+    <button class="action-button" onclick="showAll()">Expand All</button>
+</div>
+
+    <!-- Copyright notice -->
+    <div class="copyright">
+        © 2024 Ruth Ewho . All rights reserved.
+    </div>
+</div>
+
+<script>
+    // JavaScript for handling the accordion toggle effect
+    document.querySelectorAll('.accordion-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const content = item.querySelector('.accordion-content');
+            content.classList.toggle('open');
+        });
+    });
+
+    // Expand all sections when button is clicked
+    function showAll() {
+        document.querySelectorAll('.accordion-content').forEach(content => {
+            content.classList.add('open');
+        });
+    }
+</script>
+
+</body>
+</html>
+

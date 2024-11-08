@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using QuerySet.as_manager() in Django</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Using QuerySet.as_manager()</h1>
+
+        <footer>
+           
+            <p>&copy; 2024 Ruth Ewho</p>
+        </footer>
+    </header>
+
+    <div class="grid-container">
+        <section class="card" onclick="toggleCard(this)">
+            <h2>QuerySet.as_manager()</h2>
+            <p class="content">Creates a Manager that includes all public methods of a QuerySet.</p>
+        </section>
+
+        <section class="card" onclick="toggleCard(this)">
+            <h2>Rules for Method Copying</h2>
+            <p class="content">Public methods are copied to the Manager; private ones aren't unless opted in.</p>
+        </section>
+
+        <section class="card" onclick="toggleCard(this)">
+            <h2>Handling Private Methods</h2>
+            <p class="content">Private methods (with underscore) are excluded unless specifically opted in.</p>
+        </section>
+
+        <section class="card" onclick="toggleCard(this)">
+            <h2>Using queryset_only</h2>
+            <p class="content">Setting queryset_only=True keeps methods exclusive to the QuerySet.</p>
+        </section>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+

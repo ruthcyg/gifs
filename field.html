@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Mapping in Django's raw() Method</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background-color: #e3f2fd; /* Light blue for focus */
+        }
+
+        h3 {
+            color: #007bff; /* Blue for reliability and focus */
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* Psychological Colors for Cards */
+        .card-1 { background-color: #f9f9f9; }
+        .card-2 { background-color: #f1f8e9; } /* Greenish for security */
+        .card-3 { background-color: #fff3e0; } /* Light orange for clarity */
+
+        /* Copyright */
+        footer {
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <footer>
+        &copy; Ruth Ewho.
+    </footer>
+
+    <h1>Field Mapping in Django's raw() Method</h1>
+
+    <div class="container">
+        <!-- Card 1: Automatic Field Mapping -->
+        <div class="card card-1">
+            <h3>Automatic Field Mapping</h3>
+            <p>Matches SQL fields to model fields by name, regardless of order in the query.</p>
+            <p><em>Example:</em> Any field order in SQL works as long as field names match the model.</p>
+        </div>
+
+        <!-- Card 2: AS Clauses for Field Aliasing -->
+        <div class="card card-2">
+            <h3>AS Clauses for Field Aliasing</h3>
+            <p>Use <code>AS</code> to align SQL fields with model fields.</p>
+            <p><em>Example:</em> Rename fields directly in the SQL query using <code>AS</code> clauses.</p>
+        </div>
+
+        <!-- Card 3: Mapping with Translations -->
+        <div class="card card-3">
+            <h3>Mapping with Translations</h3>
+            <p>Define mappings with a <code>translations</code> dictionary for flexibility.</p>
+            <p><em>Example:</em> Map SQL fields to model fields concisely with <code>translations</code>.</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Django Field Mapping Guide. All rights reserved.
+    </footer>
+
+</body>
+</html>
+

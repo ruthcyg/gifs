@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Managers Overview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      color: #2d2d2d;
+    }
+    h1 {
+      color: #2e3b4e;
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #d4e2f4;
+    }
+    .section {
+      width: 90%;
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e6f1;
+      margin-bottom: 30px;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 22px;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Text Styling */
+    .text-content {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .text-content strong {
+      color: #0b75c9;
+    }
+
+    /* Emoji Styling */
+    .emoji {
+      font-size: 30px;
+      margin-right: 12px;
+      display: inline-block; /* Ensure emoji is treated as a block for animation */
+    }
+
+    /* Footer Styling */
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #7a7a7a;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Understanding Django Managers 🐍</h1>
+
+<div class="section">
+  <h2 class="title">Key Concepts ⚙️<footer>
+    &copy; Ruth Ewho
+  </footer></h2>
+  
+  <div class="text-content">
+    <span class="emoji" id="default-manager">🥇</span> <!-- First place medal for the default manager -->
+    <strong>The Default Manager:</strong> The default Manager is the first Manager defined in a model and is crucial for various Django operations. Be cautious when overriding its behavior.
+  </div>
+  
+  <div class="text-content">
+    <span class="emoji" id="base-manager">🧱</span> <!-- Brick for the base manager -->
+    <strong>The Base Manager:</strong> The base Manager is used to access related objects and should not filter results to ensure complete access to related data.
+  </div>
+  
+  <div class="text-content">
+    <span class="emoji" id="custom-queryset">📊</span> <!-- Bar chart for custom QuerySets -->
+    <strong>Custom QuerySets:</strong> You can create custom QuerySets and define methods within them, which can be accessed through a Manager by implementing appropriate methods.
+  </div>
+  
+</div>
+
+
+
+<script>
+  // Function to animate emojis with bounce effect
+  function bounceEmoji(emojiId) {
+    const emoji = document.getElementById(emojiId);
+    let position = 0;
+    const bounceHeight = 10; // Adjust height of bounce
+    const bounceInterval = setInterval(() => {
+      position += 1; // Increment position
+      emoji.style.transform = `translateY(-${position}px)`; // Apply translation
+
+      // Reverse bounce effect
+      if (position === bounceHeight) {
+        clearInterval(bounceInterval);
+        let reverseBounce = setInterval(() => {
+          position -= 1; // Decrement position
+          emoji.style.transform = `translateY(-${position}px`; // Apply translation
+
+          if (position === 0) {
+            clearInterval(reverseBounce);
+            bounceEmoji(emojiId); // Restart the bouncing animation
+          }
+        }, 20);
+      }
+    }, 20);
+  }
+
+  // Start bouncing animation for each emoji
+  bounceEmoji('default-manager');
+  bounceEmoji('base-manager');
+  bounceEmoji('custom-queryset');
+</script>
+
+</body>
+</html>
+
+
+

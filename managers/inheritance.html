@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polymorphic Models vs. Custom QuerySets</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+    .table-container {
+        max-width: 800px;
+        margin: auto;
+        overflow-x: auto;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #4CAF50;
+        color: #fff;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    .details-row {
+        display: none;
+    }
+    .toggle-button {
+        margin: 15px 0;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .toggle-button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="table-container">
+    <h2>Polymorphic Models vs. Custom QuerySets</h2>
+    <button class="toggle-button" onclick="toggleDetails()">Toggle Advanced Details</button>
+    <footer>
+           
+        <p>&copy; 2024 Ruth Ewho</p>
+    </footer>
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Polymorphic Models</th>
+                <th>Custom QuerySets</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Purpose</td>
+                <td>Enables querying different model subclasses as a unified base class.</td>
+                <td>Encapsulates custom query logic for a model, making it reusable and chainable.</td>
+            </tr>
+            <tr>
+                <td>Usage</td>
+                <td>Useful for mixed types needing unified querying with subclass-specific attributes.</td>
+                <td>Defines reusable filtering, ordering, or custom logic across a model’s queries.</td>
+            </tr>
+            <tr>
+                <td>Implementation</td>
+                <td>Requires <code>django-polymorphic</code> library for polymorphic behavior.</td>
+                <td>Built directly into Django using <code>models.QuerySet</code>.</td>
+            </tr>
+            <tr>
+                <td>Model Structure</td>
+                <td>Base model with subclasses (e.g., TextPost, ImagePost).</td>
+                <td>Single model with multiple filters and methods.</td>
+            </tr>
+            <tr class="details-row">
+                <td>Advantages</td>
+                <td>Simplifies working with mixed types and retrieves subclass instances for base model queries.</td>
+                <td>Organizes reusable, chainable filtering methods; enhances readability and maintainability.</td>
+            </tr>
+            <tr class="details-row">
+                <td>Disadvantages</td>
+                <td>Requires an additional library and can slow down queries on large datasets.</td>
+                <td>Limited to single models and can become complex with too many methods.</td>
+            </tr>
+            <tr class="details-row">
+                <td>Best Practices</td>
+                <td>Use for mixed types sharing core fields, and avoid over-complicating structures.</td>
+                <td>Keep methods concise, focused, and test for performance impact on large queries.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function toggleDetails() {
+        const detailsRows = document.querySelectorAll('.details-row');
+        detailsRows.forEach(row => {
+            row.style.display = row.style.display === 'table-row' ? 'none' : 'table-row';
+        });
+    }
+</script>
+
+</body>
+</html>

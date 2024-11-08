@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Managers Overview</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      color: #2d2d2d;
+    }
+    h1 {
+      color: #ff4500;
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px #d4e2f4;
+    }
+    .section {
+      width: 90%;
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      border: 2px solid #f1c40f;
+      margin-bottom: 30px;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 24px;
+      color: #2980b9;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Text Styling */
+    .text-content {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 20px;
+      padding: 10px;
+      border-left: 5px solid #ff5733;
+      background-color: #fce4ec;
+    }
+    .text-content strong {
+      color: #c0392b;
+    }
+
+    /* Emoji Styling */
+    .emoji {
+      font-size: 40px;
+      margin-right: 12px;
+      animation: bounce 1s infinite alternate;
+      transition: transform 0.2s;
+    }
+    .emoji:hover {
+      transform: scale(1.2);
+      animation: shake 0.5s;
+    }
+
+    /* Shake animation */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Bounce animation */
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-5px); }
+    }
+
+    /* Footer Styling */
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #7a7a7a;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎉 Understanding Django Managers 🐍</h1>
+
+<div class="section">
+  <h2 class="title">Key Concepts ⚙️</h2>
+  
+  <div class="text-content">
+    <span class="emoji">🌟</span>
+    <strong>The Default Manager:</strong> The default Manager is the first Manager defined in a model and is crucial for various Django operations. Be cautious when overriding its behavior!
+  </div>
+  
+  <div class="text-content">
+    <span class="emoji">🔗</span>
+    <strong>The Base Manager:</strong> The base Manager is used to access related objects and should NOT filter results to ensure you have complete access to all related data! 📊
+  </div>
+  
+  <div class="text-content">
+    <span class="emoji">📚</span>
+    <strong>Custom QuerySets:</strong> You can create custom QuerySets and define methods within them! 🎨 These can be accessed through a Manager by implementing the right methods!
+  </div>
+  
+</div>
+
+<footer>
+  &copy; Ruth Ewho 🥳
+</footer>
+
+</body>
+</html>
+

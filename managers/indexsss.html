@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Custom Migration Operations</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #4A90E2;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: colorShift 5s infinite alternate;
+        }
+
+        /* Color shift for text */
+        @keyframes colorShift {
+            0% { color: #4A90E2; }
+            25% { color: #FF6F61; }
+            50% { color: #FFC107; }
+            75% { color: #42A5F5; }
+            100% { color: #66BB6A; }
+        }
+
+        /* Main container for all sections */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Box styling with gradient animation */
+        .box {
+            background: linear-gradient(45deg, #4A90E2, #FFC107, #66BB6A, #FF6F61);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Gradient animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Grid layout for operations */
+        .operations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        /* Individual operation boxes with gradient */
+        .operation-box {
+            background: linear-gradient(45deg, #e8f4fa, #FFEB3B, #42A5F5, #4CAF50);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            border-left: 5px solid #4A90E2;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out, gradientShift 3s infinite alternate;
+        }
+
+        /* Bounce animation for emojis with color variation */
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: bounce 1.5s infinite, colorShift 5s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Arrow styling */
+        .arrow {
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #4A90E2;
+            margin: 10px auto;
+        }
+
+        /* Footer styling with gradient background */
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #fff;
+            padding: 20px;
+            width: 90%;
+            background: linear-gradient(45deg, #4A90E2, #FF6F61, #42A5F5, #66BB6A);
+            background-size: 100% 100%;
+            animation: gradientShift 10s ease infinite;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .conclusion-box {
+            background-color: #4A90E2;
+            color: white;
+            padding: 20px;
+            border-radius: 12px; /* Match overall theme */
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        }
+
+        footer::before, footer::after {
+            content: '✨';
+            position: absolute;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        footer::before { left: 10px; top: -10px; }
+        footer::after { right: 10px; bottom: -10px; }
+
+        .copyright-text {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        /* Button styling */
+        .button {
+            background-color: white;
+            color: #4A90E2;
+            border: 2px solid #4A90E2;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 1rem;
+        }
+
+        .button:hover {
+            background-color: #85FFBD;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>OperationCategory in Django Migration 🌟</h1>
+
+    <div class="main-container">
+        <div class="box">
+            <h2>Operation Categories</h2>
+            <div class="operations-grid">
+                <div class="operation-box">
+                    <div class="emoji">➕</div>
+                    <strong>ADDITION (+)</strong>: Adding a new entity
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">➖</div>
+                    <strong>REMOVAL (-)</strong>: Removing an entity
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">🔄</div>
+                    <strong>ALTERATION (~)</strong>: Modifying an entity
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">🐍</div>
+                    <strong>PYTHON (p)</strong>: Running custom Python code
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">🗄️</div>
+                    <strong>SQL (s)</strong>: Executing raw SQL commands
+                </div>
+                <div class="operation-box">
+                    <div class="emoji">❓</div>
+                    <strong>MIXED (?)</strong>: A combination of types
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="conclusion-box">
+        <p class="copyright-text">&copy; 2024 Ruth Ewho. All rights reserved.</p>
+        <p class="copyright-text">Crafted with 💙 for the Django community.</p>
+    </footer>
+
+</body>
+</html>

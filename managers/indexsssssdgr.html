@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Managers Guide</title>
+  <style>
+    /* Container and layout */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .intro {
+      width: 80%;
+      background-color: #f9f9f9;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .section {
+      width: 80%;
+      background-color: #ffffff;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .title {
+      font-weight: bold;
+      color: #444;
+    }
+    .content {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Emoji Animation */
+    .walker {
+      position: absolute;
+      font-size: 30px;
+      animation: walk 5s infinite;
+    }
+    .walker.default-base {
+      top: 10px;
+      left: -50px;
+      color: #ff6347;
+    }
+    .walker.best-practices {
+      top: 10px;
+      right: -50px;
+      color: #28a745;
+    }
+    .walker.optimizations {
+      bottom: 10px;
+      left: -50px;
+      color: #1e90ff;
+    }
+    .walker.errors {
+      bottom: 10px;
+      right: -50px;
+      color: #dc3545;
+    }
+
+    /* Walk cycle */
+    @keyframes walk {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Understanding and Utilizing Django's Default and Base Managers 🛠️</h1>
+
+<div class="intro">
+  <span class="walker default-base">🧱</span>
+  <h2 class="title">Django Default and Base Managers</h2>
+  <div class="content">
+    🧱 <strong>The Default Manager:</strong> This is the first Manager defined in a model and is essential for various Django operations. <strong>Be cautious</strong> when overriding its behavior, as it can affect how your model interacts with the Django ORM.
+    <br><br>
+    🧱 <strong>The Base Manager:</strong> This Manager is primarily used to access related objects and should not filter results to ensure complete access to related data.
+    <br><br>
+    🧱 <strong>Custom QuerySets:</strong> You can create custom QuerySets and define methods within them, which are accessible through a Manager by implementing the appropriate methods.
+  </div>
+</div>
+
+<div class="section">
+  <span class="walker best-practices">🌟</span>
+  <h2 class="title">Best Practices</h2>
+  <div class="content">
+    ✅ <strong>Set an Explicit Default Manager:</strong> Always define the default Manager (<code>default_manager_name</code>) if using multiple Managers to avoid unintended data filtering in Django operations like <code>dumpdata</code>.
+    <br><br>
+    ✅ <strong>Avoid Filtering in Base Managers:</strong> Ensure <code>get_queryset()</code> in the base Manager (<code>base_manager_name</code>) does not filter data, allowing complete data retrieval for related objects.
+    <br><br>
+    ✅ <strong>Use Custom QuerySets for Complex Filtering:</strong> Define custom QuerySets for specific roles, statuses, or record types, making your code modular and readable.
+  </div>
+</div>
+
+<div class="section">
+  <span class="walker optimizations">🚀</span>
+  <h2 class="title">Optimizations</h2>
+  <div class="content">
+    ⚙️ <strong>Leverage Selective Fields:</strong> Use <code>only()</code> or <code>defer()</code> on QuerySets when retrieving large numbers of records to limit fields and improve query performance.
+    <br><br>
+    ⚙️ <strong>Batch Operations:</strong> Use <code>bulk_create()</code> and <code>bulk_update()</code> for inserting/updating multiple records, reducing database calls and saving time.
+    <br><br>
+    ⚙️ <strong>Prefetch Related Data:</strong> Use <code>select_related()</code> and <code>prefetch_related()</code> for related models, especially for frequently accessed relationships.
+  </div>
+</div>
+
+<div class="section">
+  <span class="walker errors">💥</span>
+  <h2 class="title">Common Errors & Solutions</h2>
+  <div class="content">
+    ❌ <strong>Filtered Base Manager Issues:</strong> If related objects (e.g., archived patients) are missing, use an unfiltered base Manager to retrieve all related data.
+    <br><br>
+    ❌ <strong>Overriding <code>get_queryset()</code> Incorrectly:</strong> Avoid overly restrictive filters in <code>get_queryset()</code> to prevent unintended object restrictions.
+    <br><br>
+    ❌ <strong>Using Inconsistent Managers:</strong> Mixing <code>objects</code> with other Managers can lead to confusion. Standardize Manager usage with clear naming conventions, such as <code>all_objects</code> for unrestricted queries.
+  </div>
+</div>
+
+</body>
+</html>
+

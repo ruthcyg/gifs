@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Commands Diagram</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f7f7f7;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .diagram-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        max-width: 1200px;
+        position: relative;
+        gap: 20px;
+    }
+
+    .header {
+        font-size: 2em;
+        font-weight: bold;
+        color: #5a2ca4;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        min-width: 120px;
+        position: relative;
+    }
+
+    .section::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 20px;
+        background-color: #5a2ca4;
+    }
+
+    .label {
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #5a2ca4;
+        margin-bottom: 10px;
+    }
+
+    .box {
+        background-color: #b3e5fc;
+        padding: 10px 20px;
+        margin: 5px 0;
+        border-radius: 8px;
+        font-size: 1em;
+        color: #333;
+        text-align: center;
+        position: relative;
+    }
+
+    /* Connectors */
+    .connector {
+        position: absolute;
+        background-color: #5a2ca4;
+        width: 2px;
+        height: 100px; /* Adjust height for connector lines */
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+    }
+
+    .horizontal-connector {
+        position: absolute;
+        background-color: #5a2ca4;
+        height: 2px;
+        width: 80px; /* Adjust width for horizontal lines */
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+    }
+
+    /* Icons as background images */
+    .section[data-icon="dql"] {
+        background-image: url('path/to/dql-icon.png');
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: top 10px center;
+    }
+
+    .section[data-icon="tcl"] {
+        background-image: url('path/to/tcl-icon.png');
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: top 10px center;
+    }
+
+    /* Additional specific icons for each section can be added here */
+</style>
+</head>
+<body>
+    <div class="diagram-container">
+        <div class="header">SQL COMMANDS</div>
+
+        <!-- DQL Section -->
+        <div class="section" data-icon="dql">
+            <div class="label">DQL</div>
+            <div class="box">SELECT</div>
+            <div class="box">WHERE</div>
+            <div class="box">GROUP BY</div>
+            <div class="box">ORDER BY</div>
+            <div class="box">JOIN</div>
+            <div class="connector"></div>
+        </div>
+
+        <!-- TCL Section -->
+        <div class="section" data-icon="tcl">
+            <div class="label">TCL</div>
+            <div class="box">COMMIT</div>
+            <div class="box">ROLLBACK</div>
+            <div class="connector"></div>
+        </div>
+
+        <!-- DML Section -->
+        <div class="section" data-icon="dml">
+            <div class="label">DML</div>
+            <div class="box">INSERT</div>
+            <div class="box">UPDATE</div>
+            <div class="box">DELETE</div>
+            <div class="connector"></div>
+        </div>
+
+        <!-- DDL Section -->
+        <div class="section" data-icon="ddl">
+            <div class="label">DDL</div>
+            <div class="box">CREATE</div>
+            <div class="box">ALTER</div>
+            <div class="box">DROP</div>
+            <div class="box">TRUNCATE</div>
+            <div class="connector"></div>
+        </div>
+
+        <!-- DCL Section -->
+        <div class="section" data-icon="dcl">
+            <div class="label">DCL</div>
+            <div class="box">GRANT</div>
+            <div class="box">REVOKE</div>
+            <div class="connector"></div>
+        </div>
+    </div>
+</body>
+</html>
