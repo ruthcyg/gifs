@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Annotations in Django</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1, h2 {
+            color: #00eaff;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #00eaff;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
+            max-width: 800px;
+            width: 90%;
+            margin: 20px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        .key-point {
+            background: #2c2c2c;
+            margin: 15px 0;
+            padding: 20px;
+            border-left: 5px solid #00eaff;
+            border-radius: 8px;
+            position: relative;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .key-point:hover {
+            background: #383838;
+            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
+        }
+
+        .key-point span {
+            font-weight: bold;
+            color: #00eaff;
+        }
+
+        .code-block {
+            background-color: #282a36;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 20px 0;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        code {
+            font-size: 0.95rem;
+        }
+
+        footer {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #00eaff;
+            margin-top: auto;
+        }
+
+        .learn-more {
+            background-color: #00eaff;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px;
+        }
+
+        .learn-more:hover {
+            background-color: #00b3cc;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .key-point {
+                padding: 15px;
+            }
+
+            .code-block {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Advanced Annotations in Django</h1>
+
+    <div class="container">
+        <h2>Subqueries Within Annotations for Complex Data Retrieval 🚧</h2>
+
+        <div class="key-point">
+            <span>Purpose:</span> 
+            Annotations can include subqueries to pull in related data, enabling complex calculations and data retrieval within a single query.
+        </div>
+
+        <div class="key-point">
+            <span>Use Case:</span> 
+            Annotate each Product with its latest sale price from a related Sale model, avoiding additional joins or multiple queries.
+        </div>
+
+        <div class="code-block">
+            <code>
+from django.db.models import OuterRef, Subquery
+
+latest_sales = Sale.objects.filter(product=OuterRef('pk')).order_by('-date')
+products = Product.objects.annotate(
+    latest_sale_price=Subquery(latest_sales.values('price')[:1])
+)
+
+for product in products:
+    print(f"{product.name}: Latest Sale Price - ${product.latest_sale_price}")
+            </code>
+        </div>
+
+        <div class="key-point">
+            <span>Explanation:</span> 
+            The subquery fetches the latest sale price by ordering sales in descending order and retrieving the top record. This approach is powerful for fetching recent data or related records without additional joins.
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Advanced Annotations in Django. All Rights Reserved.</p>
+        <button class="learn-more" onclick="showMore()">Learn More</button>
+    </footer>
+
+    <script>
+        function showMore() {
+            alert("Thank you for exploring advanced Django annotations! Stay tuned for more insights.");
+        }
+    </script>
+
+</body>
+</html>

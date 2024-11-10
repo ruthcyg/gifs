@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Considerations in Django Annotations</title>
+    <style>
+        /* Basic reset and layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .key-point {
+            background: #ecf0f1;
+            margin: 15px 0;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .key-point span {
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Performance Considerations in Django Annotations 🚀 <footer>
+            <p>&copy; Ruth Ewho</p>
+        </footer></h1>
+        
+        <div class="key-point">
+            <span>Large Datasets:</span> 
+            Calculating or aggregating values within the database reduces the volume of data transferred, crucial for scaling.
+        </div>
+
+        <div class="key-point">
+            <span>Frequent Calculations:</span> 
+            When the same calculation is needed for every object in a queryset, annotations help reduce repetitive computation.
+        </div>
+
+        <div class="key-point">
+            <span>Aggregated Data:</span> 
+            Using annotations for grouping or summing data avoids multiple queries, improving performance in reporting or analytics views.
+        </div>
+
+        <div class="key-point">
+            <span>Considerations:</span> 
+            Always watch out for the N+1 query problem when using annotations in nested loops or related queries. Use <code>select_related()</code> or <code>prefetch_related()</code> as needed to optimize.
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Ruth Ewho 2024 Performance Considerations in Django Annotations. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

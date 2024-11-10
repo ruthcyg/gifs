@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Django Annotations</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9f1f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #003366;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Grid and Card Styles */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            box-sizing: border-box;
+        }
+
+        /* Front Card Style */
+        .card-front {
+            background-color: #4a90e2;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-back {
+            background-color: #a8d8d8;
+            color: #003d47;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer Style */
+        footer {
+            text-align: center;
+            font-size: 1rem;
+            color: #666;
+            margin-top: 30px;
+            padding-top: 10px;
+            width: 100%;
+            max-width: 1100px;
+            border-top: 1px solid #ddd;
+        }
+
+        .learn-more {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .learn-more:hover {
+            background-color: #002244;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 700px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mastering Django Annotations for Optimized Queries   <footer>
+        &copy; Ruth Ewho
+    </footer></h1>
+
+    <div class="grid-container">
+
+        <!-- Card 1: Why Use Annotations? -->
+        <div class="card" id="card1">
+            <div class="card-content card-front">
+                <h2>Why Use Annotations? 🔥</h2>
+                <p>Reduce unnecessary data transfer and Python processing!</p>
+                <ul>
+                    <li>Minimize database load</li>
+                    <li>Leverage database optimization</li>
+                    <li>Save on memory usage</li>
+                </ul>
+            </div>
+            <div class="card-content card-back">
+                <h2>Calculate Total Price 🛒</h2>
+                <p>Perform calculations directly in the database, improving efficiency.</p>
+            </div>
+        </div>
+
+        <!-- Card 2: Calculate Total Price -->
+        <div class="card" id="card2">
+            <div class="card-content card-front">
+           
+                <h2>When Not to Use Annotations ❗</h2>
+                <p>Consider alternatives when:</p>
+                <ul>
+                    <li>Data processing is minimal</li>
+                    <li>Calculations are too complex</li>
+                    <li>Database optimization is limited</li>
+                </ul>
+            </div>
+            <div class="card-content card-back">
+                <h2>Aggregate Data with Grouping 📊</h2>
+                <p>Group and aggregate data for efficient querying.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Django Performance Insights. <button class="learn-more" onclick="showMore()">Learn More</button> for advanced tips!
+    </footer>
+
+    <script>
+        // Show more function for button
+        function showMore() {
+            alert("Thank you for exploring Django optimizations! Subscribe for more insights.");
+        }
+
+        // Automatic flipping function
+        function flipCards() {
+            const card1 = document.getElementById('card1');
+            const card2 = document.getElementById('card2');
+            
+            setInterval(() => {
+                card1.classList.toggle('flipped');
+                card2.classList.toggle('flipped');
+            }, 4000); // Flips every 4 seconds
+        }
+
+        // Start automatic flipping on page load
+        window.onload = flipCards;
+    </script>
+
+</body>
+</html>
+
+
+
+
+

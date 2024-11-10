@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actions Speak Louder</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Roboto', sans-serif;
+      background: radial-gradient(circle, rgba(255, 204, 255, 0.6), rgba(173, 216, 230, 0.6));
+      color: #333;
+      overflow: hidden;
+      text-align: center;
+      padding: 30px;
+      transition: background 1s ease;
+    }
+    .container {
+      max-width: 650px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 50px 25px;
+      border-radius: 20px;
+      box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.2);
+      transform: scale(1);
+      transition: transform 0.3s ease;
+      animation: fadeIn 2s ease-out;
+    }
+    .title {
+      font-size: 32px;
+      color: #2980b9;
+      font-weight: bold;
+      margin-bottom: 30px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: bounceIn 1s infinite alternate;
+    }
+    .quote {
+      font-size: 24px;
+      color: #2c3e50;
+      margin: 25px 0;
+      font-style: italic;
+      position: relative;
+      padding-left: 15px;
+      transition: opacity 1s ease;
+      opacity: 0;
+      animation: fadeInQuote 2s ease-out 1.5s forwards;
+    }
+    .content {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #555;
+      animation: slideUp 1s ease-out 2s forwards;
+    }
+    .highlight {
+      color: #e74c3c;
+      font-weight: bold;
+      font-size: 24px;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      transition: color 0.3s ease;
+    }
+    .container:hover {
+      transform: scale(1.05);
+    }
+    .container:hover .highlight {
+      color: #f39c12;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes bounceIn {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes fadeInQuote {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+      
+    <footer>
+        <p>&copy; Ruth Ewho.</p> 
+       </footer>
+    <div class="title">🔍 Actions Speak Louder Than Words</div>
+    <div class="quote">  
+      “For as he thinketh in his heart, so is he.” – Proverbs 23:7 🧠
+    </div>
+    <div class="content">
+      🌍 In this world, we often try to read minds 👀, but the real truth is found in what people do.<br> 
+      <span class="highlight">💥 Actions reveal who they really are 💥</span>. <br>Instead of focusing on every word they say 🗣️, pay attention to what they do 🦸‍♀️.  
+      <br>❤️ True character isn't in words—it’s in how we act and treat others. ,<br> Let actions speak for themselves.  
+      ✨ Let them reveal the truth! ✨
+    </div>
+  </div>
+</body>
+</html>

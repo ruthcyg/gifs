@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words vs Actions - Emoji Visual</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef; /* Soft gray background for calmness */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Adjusted to align the name on top */
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Styling the name "Ruth Ewho" at the top */
+        .name {
+            font-family: 'Georgia', serif;
+            font-size: 2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #2ecc71; /* Green for calming effect */
+            background: linear-gradient(to right, #2ecc71, #e74c3c);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add shadow for effect */
+            margin-bottom: 40px; /* Space between the name and the content */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            width: 80%;
+            max-width: 900px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .emoji-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-radius: 15px;
+            font-size: 3em;
+            line-height: 1.6;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .emoji-box.words {
+            background-color: #e74c3c; /* Red symbolizes urgency, passion, and intensity (Words) */
+            color: white;
+        }
+
+        .emoji-box.actions {
+            background-color: #2ecc71; /* Green symbolizes growth, trust, and calmness (Actions) */
+            color: white;
+        }
+
+        .emoji-box .emoji {
+            margin-bottom: 20px;
+        }
+
+        .emoji-box .emoji:hover {
+            transform: scale(1.2);
+            transition: transform 0.3s;
+        }
+
+        .emoji-box .emoji:first-child {
+            animation: floatEmoji 3s infinite ease-in-out;
+        }
+
+        @keyframes floatEmoji {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .tagline {
+            font-size: 1.5em;
+            font-weight: 400;
+            color: #333; /* Dark gray for neutrality, creating a calm effect */
+            margin-top: 40px;
+            grid-column: span 2;
+            max-width: 700px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .tagline span {
+            color: #e74c3c; /* Red for emphasis on "actions" part */
+            font-weight: 600;
+        }
+
+        footer {
+            font-size: 0.9em;
+            color: #888; /* Light gray for the footer to stay subtle */
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .tagline {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <footer>
+        <p>&copy; Ruth Ewho</p>
+    </footer>
+
+    <div class="container">
+      
+        <div class="emoji-box words">
+            <div class="emoji">💬</div>
+            <div class="emoji">🗣️</div>
+        </div>
+
+        <div class="emoji-box actions">
+            <div class="emoji">🤲</div>
+            <div class="emoji">❤️</div>
+        </div>
+
+        <div class="tagline">
+            <p>Words can speak, but <span>actions</span> show the truth.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Ruth Ewho</p>
+    </footer>
+</body>
+</html>
+

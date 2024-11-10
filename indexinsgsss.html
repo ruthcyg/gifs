@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizing Indexing in Django with raw()</title>
+    <style>
+        /* Universal Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* Subheading */
+        .subheading {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        /* Grid Container */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* Card Styling */
+        .section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Card Hover Animation */
+        .section:hover {
+            transform: translateY(-6px);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Heading */
+        .section h2 {
+            font-size: 1.4rem;
+            color: #1e90ff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Paragraph Styling */
+        .section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        /* Code Block */
+        .code-block {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-left: 4px solid #1e90ff;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #c0392b;
+            margin: 15px 0;
+        }
+
+        /* Optimization Tip */
+        .tip {
+            background-color: #27ae60;
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Optimizing raw  queries with effective indexing strategies     <footer>
+        &copy; Ruth Ewho
+    </footer></h1>
+    <div class="subheading">   </div>
+   
+
+    <!-- Grid Container for Sections -->
+    <div class="grid-container">
+        <!-- Section 1: Python-Style Indexing -->
+        <div class="section">
+            <h2>Indexing with raw(): Retrieving Only the First Result</h2>
+            <p>When you only need the first result, Python-style indexing (e.g., <code>[0]</code>) works, but beware—Django's <code>raw()</code> doesn’t apply this at the database level. Instead, it retrieves all rows and applies indexing in Python, which can be inefficient with large datasets.</p>
+            <div class="code-block">
+                <code>first_person = Person.objects.raw("SELECT * FROM myapp_person")[0]</code>
+            </div>
+        </div>
+
+        <!-- Section 2: Optimization Tip with SQL's LIMIT -->
+        <div class="section">
+            <h2>Optimization Tip: Use SQL's LIMIT Clause</h2>
+            <p>Adding a <code>LIMIT</code> clause lets the database handle the work, significantly reducing memory and processing demands.</p>
+            <p><strong>Before Optimization:</strong></p>
+            <div class="code-block">
+                <code>first_person = Person.objects.raw("SELECT * FROM myapp_person")[0]</code>
+            </div>
+            <p><strong>Optimized Query with LIMIT:</strong></p>
+            <div class="code-block">
+                <code>first_person = Person.objects.raw("SELECT * FROM myapp_person LIMIT 1")[0]</code>
+            </div>
+            <div class="tip">💡 Save time and resources by letting SQL return only the first row!</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Efficient Indexing with Django. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
+

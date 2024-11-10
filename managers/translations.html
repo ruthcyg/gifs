@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deeper Dive into the translations Argument in Django</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #444;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 30px;
+            padding: 30px;
+            justify-items: center; /* Centers the content horizontally */
+            min-height: 100vh; /* Ensure the layout takes full screen height */
+            grid-auto-rows: 1fr;
+        }
+
+     
+
+        .section {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-left: 6px solid #1a73e8;
+            transition: all 0.3s ease-in-out;
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            text-align: left;
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            color: #1a73e8;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            background-color: #fff9c4;
+            border-left: 6px solid #fbc02d;
+            padding: 20px;
+            margin-top: 25px;
+            font-weight: bold;
+            color: #333;
+            border-radius: 10px;
+        }
+
+        footer {
+            font-size: 0.95em;
+            color: #444;
+            text-align: center;
+            grid-column: span 3;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f7f7f7;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            body {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Simple Centered Header -->
+ 
+
+    <!-- Grid Section 1 -->
+     
+     
+     
+
+    <div class="section">
+     
+        
+        <h3>Limitations of Translations</h3>
+        <p>Despite the power and flexibility that the <code>translations</code> argument offers, there are some limitations to consider:</p>
+        <ul>
+            <li><strong>Complexity:</strong> When translating multiple fields or handling deeply nested structures, it can become difficult to manage and debug.</li>
+            <li><strong>Data Integrity:</strong> Ensure fields align properly to avoid issues such as mismatches or <code>None</code> values in the final result.</li>
+        </ul>
+    </div>
+
+    <!-- Grid Section 2 -->
+    <div class="section">
+        <h3>Code Clarity and Formatting</h3>
+        <p>To enhance the readability and maintainability of your <code>raw()</code> code, make use of syntax highlighting and clear comments:</p>
+        <ul>
+            <li><strong>Syntax Highlighting:</strong> Use proper formatting for SQL queries to make them more readable.</li>
+            <li><strong>Commenting:</strong> Add comments to explain complex translations or queries that might be hard to follow.</li>
+        </ul>
+        <div class="highlight">
+            <p><strong>Tip:</strong> Keep queries as simple as possible to avoid errors or future confusion.</p>
+        </div>
+    </div>
+
+    <!-- Grid Section 3 -->
+    <div class="section">
+        <h3>Best Practices</h3>
+        <p>For long-term maintainability of your code and smoother handling of raw queries, consider the following:</p>
+        <ul>
+            <li><strong>Modular Queries:</strong> Break large queries into smaller, reusable parts.</li>
+            <li><strong>Consistency:</strong> Keep field names in sync between the model and the query results.</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; Ruth Ewho.
+    </footer>
+
+</body>
+</html>
+
+
+
+

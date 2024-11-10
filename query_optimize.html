@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizing Django Query Performance</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff; /* Light Blue Background for calm */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007acc; /* Trustworthy Blue */
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Card Styles */
+        .card {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .flipped {
+            transform: rotateY(180deg);
+        }
+
+        /* Front and Back Card Sides */
+        .card-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card-front {
+            background-color: #007acc; /* Strong Blue */
+            color: #fff;
+        }
+
+        .card-back {
+            background-color: #e0f2f1; /* Soft Green */
+            color: #004d40;
+            transform: rotateY(180deg);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+
+        /* Footer and Button */
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .learn-more {
+            background-color: #007acc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .learn-more:hover {
+            background-color: #005f8a;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 700px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Optimizing Django Query Performance  <footer>
+        &copy; Ruth Ewho
+    </footer></h1>
+
+    <!-- Grid for Cards -->
+    <div class="grid-container">
+        
+        <!-- Drawbacks Card -->
+        <div class="card" id="card1">
+            <div class="card-content card-front">
+                <h2>Potential Drawbacks</h2>
+                <p>Deferring fields can improve performance, but be aware of potential downsides!</p>
+            </div>
+            <div class="card-content card-back">
+                <h2>Drawbacks Explained</h2>
+                <p><strong>Additional Queries:</strong> Each deferred field access triggers a new query.</p>
+                <p><strong>Complex Field Planning:</strong> Field access planning is crucial to avoid N+1 query issues.</p>
+            </div>
+        </div>
+
+        <!-- Alternatives Card -->
+        <div class="card" id="card2">
+            <div class="card-content card-front">
+                <h2>Alternatives to Deferred Fields</h2>
+                <p>There are other ways to optimize queries besides deferring fields. Learn more!</p>
+            </div>
+            <div class="card-content card-back">
+                <h2>Alternative Techniques</h2>
+                <p><strong>Caching:</strong> Use caching for static data to reduce database load.</p>
+                <p><strong>Database Indexing:</strong> Improve query performance with indexes.</p>
+                <p><strong>Preloading Data:</strong> Use <code>select_related()</code> and <code>prefetch_related()</code>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; Ruth Ewho 2024 Django Performance Insights. <button class="learn-more" onclick="showMore()">Join our newsletter</button> for more tips!
+    </footer>
+
+    <script>
+        // Show more function for button
+        function showMore() {
+            alert("Thank you for your interest! Subscribe for Django optimization insights.");
+        }
+
+        // Automatic flipping function
+        function flipCards() {
+            const card1 = document.getElementById('card1');
+            const card2 = document.getElementById('card2');
+            
+            setInterval(() => {
+                card1.classList.toggle('flipped');
+                card2.classList.toggle('flipped');
+            }, 4000); // Flips every 4 seconds
+        }
+
+        // Start automatic flipping on page load
+        window.onload = flipCards;
+    </script>
+
+</body>
+</html>

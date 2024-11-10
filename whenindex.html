@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizing Django Query Performance with Deferred Fields</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #4a90e2;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Grid Layout for Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            position: relative;
+        }
+
+        /* Section Headers */
+        h2 {
+            font-size: 1.5rem;
+            color: #27ae60;
+            margin-bottom: 10px;
+            border-left: 4px solid #27ae60;
+            padding-left: 10px;
+        }
+
+        /* Code Block Styling */
+        .code-block {
+            background-color: #f0f4f8;
+            color: #34495e;
+            padding: 15px;
+            border-left: 4px solid #4a90e2;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 15px 0;
+        }
+
+        /* Tooltip Styling */
+        .tooltip {
+            color: #4a90e2;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Footer Styling */
+        footer {
+         
+            font-size: 0.9rem;
+            color: #777;
+            text-align: center;
+            padding: 15px 0;
+            border-top: 1px solid #ddd;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 800px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Optimizing Django Query Performance with Deferred Fields   <footer>
+        <p>&copy; Ruth Ewho</p>
+  
+    </footer></h1>
+  
+
+    <!-- Grid Container with Two-Column Layout for Cards -->
+    <div class="grid-container">
+
+        <!-- Card 1: When to Use Deferred Fields -->
+        <div class="card">
+            <h2>When to Use Deferred Fields</h2>
+            <ul>
+                <li>You only need a few fields from a large model.</li>
+                <li>You're accessing a high-volume table.</li>
+                <li>Reducing database load is crucial.</li>
+            </ul>
+            <p>With deferred fields, you control when data is loaded, making applications efficient without sacrificing functionality.</p>
+        </div>
+
+        <!-- Card 2: When Not to Use Deferred Fields -->
+        <div class="card">
+            <h2>When <span class="tooltip">Not <span class="tooltiptext">Avoid deferring too many fields, especially if most fields will be accessed later.</span></span> to Use Deferred Fields</h2>
+            <ul>
+                <li>When most fields will be accessed eventually.</li>
+                <li>For small tables where deferred fields don’t improve performance.</li>
+                <li>If the deferred fields are critical for display or logic.</li>
+            </ul>
+            <p>Overusing deferred fields may result in multiple database hits, slowing down performance.</p>
+        </div>
+
+        <!-- Card 3: Example - Fetching Only What You Need -->
+        <div class="card">
+            <h2>Example: Fetching Only What You Need</h2>
+            <div class="code-block">
+                <code>
+                    # Fetch only 'id' and 'first_name' from Person model<br>
+                    people = Person.objects.raw("SELECT id, first_name FROM myapp_person")
+                </code>
+            </div>
+            <p>Here, only the specified fields load initially. Other fields, like <code>last_name</code>, are fetched on demand.</p>
+        </div>
+
+        <!-- Card 4: On-Demand Field Loading -->
+        <div class="card">
+            <h2>On-Demand Field Loading in Action</h2>
+            <div class="code-block">
+                <code>
+                    for p in Person.objects.raw("SELECT id, first_name FROM myapp_person"):<br>
+                        &nbsp;&nbsp;print(p.first_name)  # Loaded initially<br>
+                        &nbsp;&nbsp;print(p.last_name)   # Loaded on demand
+                </code>
+            </div>
+            <p>This approach triggers multiple queries when deferred fields are accessed, so use carefully.</p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Django Optimization Insights. All Rights Reserved.</p>
+        <p><a href="#">Sign up</a> for our newsletter for more tips on Django performance!</p>
+    </footer>
+
+</body>
+</html>

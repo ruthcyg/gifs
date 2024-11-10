@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actions Reveal the Real Truth</title>
+  <style>
+    /* Resetting margin and padding for a clean layout */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      color: #333;
+      margin: 0;
+      overflow: hidden;
+    }
+    .container {
+      max-width: 700px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 50px 30px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 2s ease;
+      position: relative;
+    }
+    .title {
+      font-size: 28px;
+      color: #2c3e50;
+      font-weight: bold;
+      margin-bottom: 25px;
+      position: relative;
+      text-transform: uppercase;
+    }
+    .quote {
+      font-size: 22px;
+      color: #34495e;
+      margin: 25px 0;
+      font-style: italic;
+      border-left: 5px solid #3498db;
+      padding-left: 15px;
+      opacity: 0;
+      animation: slideIn 1.5s ease forwards;
+      animation-delay: 1s;
+    }
+    .content {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #555;
+      margin-top: 15px;
+    }
+    .highlight {
+      color: #e74c3c;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .container:hover .highlight {
+      color: #3498db;
+      text-decoration: underline;
+    }
+    .fadeInWord {
+      opacity: 0;
+      animation: fadeInWord 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    @keyframes fadeInWord {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const words = document.querySelectorAll('.fadeInWord');
+      words.forEach((word, index) => {
+        setTimeout(() => {
+          word.style.opacity = '1';
+        }, index * 200);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Stop Trying to Read Minds</div>
+    <div class="quote">
+      “For as he thinketh in his heart, so is he.” — Proverbs 23:7
+    </div>
+    <div class="content">
+      In a world where we’re constantly trying to decode people’s thoughts, we overlook one important truth:
+      <span class="highlight fadeInWord">actions reveal the real story</span>. People may use words to paint a picture, but their true character is reflected in how they behave. When we focus on observing actions instead of analyzing every word, we allow the truth to speak for itself.
+    </div>
+  </div>
+</body>
+</html>
+

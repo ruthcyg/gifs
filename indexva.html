@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django raw() Tips & Pitfalls</title>
+    <style>
+        /* Universal Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9fafc;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 2.5rem;
+            color: #2d88e5;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Section Style */
+        .section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Headings */
+        .section h2 {
+            font-size: 1.5rem;
+            color: #ff5722;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Code Block */
+        .code-block {
+            background-color: #f0f2f5;
+            padding: 15px;
+            border-left: 5px solid #2d88e5;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        /* Tips Section */
+        .tip {
+            display: flex;
+            align-items: center;
+            background-color: #2ecc71;
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .tip::before {
+            content: "🔥";
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Master Django's raw() with Best Practices & Pitfalls</h1>
+    <footer>
+        &copy;Ruth Ewho
+    </footer>
+
+    <!-- Grid Container -->
+    <div class="grid-container">
+
+        <!-- Pitfalls Section -->
+        <div class="section">
+            <h2>Common Pitfalls and Solutions 🔥</h2>
+            <p><strong>Pitfall:</strong> Overusing Raw SQL<br>
+               <strong>Solution:</strong> Reserve <code>raw()</code> for cases where Django’s ORM doesn’t efficiently handle the query.</p>
+
+            <p><strong>Pitfall:</strong> Forgetting SQL LIMIT<br>
+               <strong>Solution:</strong> Always limit your queries at the database level when you only need a few results.</p>
+
+            <p><strong>Pitfall:</strong> Using Raw SQL When ORM Can Handle It<br>
+               <strong>Solution:</strong> Use <code>raw()</code> only when you need unique, optimized queries that the ORM can’t handle efficiently.</p>
+        </div>
+
+        <!-- Best Practices Section -->
+        <div class="section">
+            <h2>Best Practices for Using raw()</h2>
+            <p><strong>Use raw() Sparingly:</strong> Save <code>raw()</code> for cases requiring specific SQL optimizations. Django’s ORM is generally faster and safer.</p>
+
+            <p><strong>Test Performance:</strong> Use Python's <code>time</code> module to measure the impact of <code>LIMIT</code> and other query optimizations:</p>
+            <div class="code-block">
+                <code>
+                    import time<br>
+                    start = time.time()<br>
+                    first_person = Person.objects.raw("SELECT * FROM myapp_person LIMIT 1")[0]<br>
+                    end = time.time()<br>
+                    print("Time taken:", end - start)
+                </code>
+            </div>
+        </div>
+
+        <!-- Performance Testing Section -->
+        <div class="section">
+            <h2>Performance Testing Tips</h2>
+            <p>Benchmarking is key to understanding the impact of optimizations. Here are some useful methods:</p>
+            <div class="tip">💡 Use LIMIT to minimize data load and measure time taken!</div>
+            <p>Profiling tools like Django Debug Toolbar reveal bottlenecks in your queries, giving you a roadmap for optimization.</p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Django Query Optimization Tips. All Rights Reserved.
+    </footer>
+
+</body>
+</html>

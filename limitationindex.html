@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potential Limitations and Caveats in Django Annotations 🚧</title>
+    <style>
+        /* Basic reset and layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .key-point {
+            background: #f2dede;
+            margin: 15px 0;
+            padding: 20px;
+            border-left: 5px solid #e74c3c;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .key-point span {
+            font-weight: bold;
+            color: #c0392b;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Potential Limitations and Caveats in Django Annotations 🚧   <footer>
+            <p>&copy; Ruth Ewho</p>
+        </footer></h1>
+        
+        <div class="key-point">
+            <span>Database Compatibility:</span> 
+            Some annotation functions are database-specific, like PostgreSQL's <code>age()</code> function. Always check if your database supports the function, or use Django ORM functions like <code>Func()</code> for portability.
+        </div>
+
+        <div class="key-point">
+            <span>Complex Calculations:</span> 
+            For deeply complex calculations, annotated fields can become harder to read and debug. In these cases, raw SQL or stored procedures may be better options.
+        </div>
+
+        <div class="key-point">
+            <span>Query Performance:</span> 
+            While annotations improve performance for large datasets, excessively complex queries or a high number of annotations can slow down query execution. Profiling is essential to measure the impact.
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Ruth Ewho 2024 Potential Limitations and Caveats in Django Annotations. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

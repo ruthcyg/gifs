@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Django's defer() and only() Methods for Deferred Fields</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4a90e2;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: #27ae60;
+            margin-bottom: 10px;
+            border-left: 4px solid #27ae60;
+            padding-left: 10px;
+        }
+
+        /* Code Block */
+        .code-block {
+            background-color: #f0f4f8;
+            color: #34495e;
+            padding: 10px;
+            border-left: 4px solid #4a90e2;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 15px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #777;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 700px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Using Django's defer() and only() Methods for Deferred Fields    <footer>
+        <p>&copy; Ruth Ewho</p>
+    </footer></h1>
+
+    <!-- Grid Container for Cards -->
+    <div class="grid-container">
+
+        <!-- Card 1: Understanding defer() -->
+        <div class="card">
+            <h2>Using defer() for Specific Fields</h2>
+            <p>The <code>defer()</code> method allows you to defer specific fields, loading others by default. This is ideal when you need most fields but want to exclude some.</p>
+            <div class="code-block">
+                <code>
+                # Defers 'account_history' and 'payment_info', loads others by default<br>
+                customers = Customer.objects.defer("account_history", "payment_info")
+                </code>
+            </div>
+            <p>Deferring fields minimizes the data retrieved initially, improving performance when large fields are unnecessary.</p>
+        </div>
+
+        <!-- Card 2: Understanding only() -->
+        <div class="card">
+            <h2>Using only() for Selective Loading</h2>
+            <p>The <code>only()</code> method lets you specify fields to load immediately, deferring all others until they’re accessed.</p>
+            <div class="code-block">
+                <code>
+                # Loads only 'id', 'first_name', 'last_name' immediately<br>
+                customers = Customer.objects.only("id", "first_name", "last_name")
+                </code>
+            </div>
+            <p>This method ensures only essential fields are loaded, reducing query complexity and resource usage.</p>
+        </div>
+
+    
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Ruth Ewho 2024 Django Performance Insights. <a href="#">Join our newsletter</a> for more Django optimization tips!</p>
+    </footer>
+
+</body>
+</html>

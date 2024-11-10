@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F() Expressions in Django</title>
+    <style>
+        /* Basic reset and layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+            /* Footer Styling */
+            footer {
+         
+            font-size: 0.9rem;
+            color: #777;
+            text-align: center;
+            padding: 15px 0;
+            border-top: 3px solid #ddd;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .key-point {
+            background: #ecf0f1;
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            border-radius: 4px;
+            font-size: 1.2rem;
+        }
+
+        .key-point span {
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        /* Button Style */
+        .toggle-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+
+        .toggle-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>F() Expressions in Django    <footer>
+            <p>&copy; Ruth Ewho</p>
+           
+        </footer></h1>
+        
+        <div class="key-point">
+            <span>Purpose:</span> Allows referencing model fields directly in queries.
+        </div>
+
+        <div class="key-point">
+            <span>Efficiency:</span> Performs calculations within the database, not Python.
+        </div>
+
+        <div class="key-point">
+            <span>Use Case:</span> Ideal for field-level calculations (e.g., addition, division).
+        </div>
+
+        <div class="key-point">
+            <span>Example:</span> 
+            <code>Order.objects.filter(quantity__gt=F('stock_level') / 2)</code> 
+            – calculates <code>stock_level / 2</code> in the database.
+        </div>
+
+        <div class="key-point">
+            <span>Benefit:</span> Reduces data transfer and improves query performance.
+        </div>
+        <div class="key-point">
+            <span>Database Optimization:</span> Reduces memory usage by handling operations within the database.
+        </div>
+        <div class="key-point">
+            <span>Direct Updates:</span> Can be used in <code>update()</code> queries to modify fields based on other fields.
+        </div>
+
+  
+
+        <div  style="display: none; margin-top: 20px;">
+            <div class="key-point">
+                <span>Database Optimization:</span> Reduces memory usage by handling operations within the database.
+            </div>
+
+            <div class="key-point">
+                <span>Direct Updates:</span> Can be used in <code>update()</code> queries to modify fields based on other fields.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAdditionalInfo() {
+            const info = document.getElementById('additional-info');
+            if (info.style.display === 'none') {
+                info.style.display = 'block';
+            } else {
+                info.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+

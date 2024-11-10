@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Best Practices for Django's raw() Queries</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            color: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Grid Layout for Content */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+
+        /* Section Styling */
+        .section {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Heading */
+        .section h2 {
+            font-size: 1.6rem;
+            color: #e67e22;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .section p {
+            font-size: 1rem;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        /* Code Block Styling */
+        .code-block {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 5px solid #e74c3c;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #2c3e50;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Security Best Practices for Django's raw() Queries</h1>
+    <footer>
+        &copy; Ruth Ewho
+    </footer>
+
+    <!-- Grid Container for Content Sections -->
+    <div class="grid-container">
+
+        <!-- Parameterized Queries Section -->
+        <div class="section">
+            <h2>Parameterized Queries</h2>
+            <p>To protect your application from SQL injection, always use parameterized queries with <code>raw()</code>. This prevents attackers from manipulating your SQL queries by injecting malicious data:</p>
+            <div class="code-block">
+                <code>
+                    customer_id = 42;<br>
+                    orders = Order.objects.raw("SELECT * FROM orders WHERE customer_id = %s", [customer_id])
+                </code>
+            </div>
+            <p>Using parameterized queries ensures that user inputs are handled safely, preventing SQL injection attacks by separating the query from the data being inserted.</p>
+        </div>
+
+        <!-- Escaping User Input Section -->
+        <div class="section">
+            <h2>Escaping User Input</h2>
+            <p>In cases where parameterized queries aren't possible, sanitize user inputs by escaping them before using in raw SQL. This ensures potentially dangerous characters are neutralized:</p>
+            <div class="code-block">
+                <code>
+                    from django.db import connection<br>
+                    from django.utils.html import escape<br><br>
+                    user_input = escape(request.GET['user_input'])<br>
+                    cursor = connection.cursor()<br>
+                    cursor.execute("SELECT * FROM products WHERE name = %s", [user_input])
+                </code>
+            </div>
+            <p>Using <code>escape()</code> ensures that special characters such as <code>'</code> or <code>--</code> are neutralized, protecting your application from SQL injection vulnerabilities.</p>
+        </div>
+
+        <!-- Avoiding String Concatenation Section -->
+        <div class="section">
+            <h2>Avoid String Concatenation</h2>
+            <p>Avoid building SQL queries by concatenating strings or directly inserting user data into the query. This method exposes your application to SQL injection attacks:</p>
+            <div class="code-block">
+                <code>
+                    # BAD: Direct string concatenation can lead to SQL injection<br>
+                    query = "SELECT * FROM orders WHERE customer_id = " + customer_id<br>
+                    orders = Order.objects.raw(query)
+                </code>
+            </div>
+            <p>Instead, always use parameterized queries or Django's ORM methods to prevent direct string insertion.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+

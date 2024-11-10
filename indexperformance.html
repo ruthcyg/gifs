@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Use of Django's raw() Queries</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            color: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 2.5rem;
+            color: #3498db;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Grid Layout for Content */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+
+        /* Section Styling */
+        .section {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Heading */
+        .section h2 {
+            font-size: 1.6rem;
+            color: #e67e22;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .section p {
+            font-size: 1rem;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        /* Code Block Styling */
+        .code-block {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #2c3e50;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Advanced Use of Django's raw() Queries</h1>
+
+    <!-- Grid Container for Content Sections -->
+    <div class="grid-container">
+        
+        <!-- Complex SQL Queries Section -->
+        <div class="section">
+            <h2>Complex SQL Queries</h2>
+            <p><strong>Optimized Joins and Subqueries:</strong> Use <code>raw()</code> to handle advanced SQL operations, allowing for intricate joins, nested subqueries, and detailed aggregations that are challenging in ORM:</p>
+            <div class="code-block">
+                <code>
+                    complex_query = """<br>
+                    SELECT o.id, c.name, SUM(i.price) AS total<br>
+                    FROM orders o<br>
+                    JOIN customers c ON o.customer_id = c.id<br>
+                    JOIN items i ON o.item_id = i.id<br>
+                    GROUP BY o.id, c.name<br>
+                    ORDER BY total DESC LIMIT 5<br>
+                    """<br>
+                    top_orders = Order.objects.raw(complex_query)
+                </code>
+            </div>
+            <p>Use this for tasks like generating advanced reports, dashboards, or executing complex SQL functions.</p>
+        </div>
+
+        <!-- Stored Procedures Section -->
+        <div class="section">
+            <h2>Utilizing Stored Procedures</h2>
+            <p>Leverage stored procedures to execute complex database operations efficiently. This can significantly improve performance, particularly with pre-compiled, reusable queries:</p>
+            <div class="code-block">
+                <code>
+                    cursor = connection.cursor()<br>
+                    cursor.callproc('fetch_recent_orders', [customer_id])<br>
+                    result = cursor.fetchall()
+                </code>
+            </div>
+            <p>Stored procedures are ideal for encapsulating frequently-used logic or ensuring high performance with minimal application overhead.</p>
+        </div>
+
+        <!-- Performance Optimization Section -->
+        <div class="section">
+            <h2>Performance Optimization</h2>
+            <p><strong>Targeted Indexing:</strong> Ensure fields involved in joins, filtering, or sorting (like <code>customer_id</code> or <code>order_date</code>) are indexed. Proper indexing reduces query time and boosts efficiency in raw queries.</p>
+            <p><strong>Load Only Required Data:</strong> Avoid <code>SELECT *</code>. Fetch only the columns you need, reducing memory usage and speeding up query processing.</p>
+            <div class="code-block">
+                <code>
+                    optimized_query = "SELECT id, name, total FROM orders WHERE total > %s"<br>
+                    high_value_orders = Order.objects.raw(optimized_query, [1000])
+                </code>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+

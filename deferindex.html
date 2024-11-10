@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizing Django Query Performance with Deferred Fields</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #4a90e2;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Grid Container for Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+        }
+
+        /* Section Headers */
+        h2 {
+            font-size: 1.5rem;
+            color: #27ae60;
+            margin-bottom: 10px;
+            border-left: 4px solid #27ae60;
+            padding-left: 10px;
+        }
+
+        /* Code Block Styling */
+        .code-block {
+            background-color: #f0f4f8;
+            color: #34495e;
+            padding: 15px;
+            border-left: 4px solid #4a90e2;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 15px 0;
+        }
+
+        /* Tip Box Styling */
+        .tip {
+            background-color: #fef8e0;
+            color: #c09e1d;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            margin: 15px 0;
+            border-left: 4px solid #f1c40f;
+        }
+
+        /* Example Box Styling */
+        .example {
+            background-color: #e9f7ef;
+            color: #2e8b57;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #27ae60;
+        }
+
+        /* Footer Styling */
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #777;
+            text-align: center;
+            padding: 15px 0;
+            border-top: 1px solid #ddd;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 800px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Optimizing Django Query Performance with Deferred Fields</h1>
+    <footer>
+        <p>&copy; Ruth Ewho</p>
+       
+    </footer>
+
+    <!-- Grid Container with Two-Column Layout for Cards -->
+    <div class="grid-container">
+
+        <!-- Card 1: Introduction -->
+        <div class="card">
+            <h2>Have You Experienced Slow Page Loads?</h2>
+            <p>Fetching excessive data can slow down your application. In Django, deferring model fields can significantly enhance performance, particularly with large datasets.</p>
+            <p>Let’s dive into how you can <span style="color: #e74c3c; font-weight: bold;">optimize queries</span> with deferred fields using Django's built-in methods!</p>
+        </div>
+
+        <!-- Card 2: Why Defer Fields -->
+        <div class="card">
+            <h2>Why Defer Fields?</h2>
+            <p>Often, you only need part of the data. For example, if you just need the <code>first_name</code> field from a <code>Person</code> model, why load other fields? Django allows you to exclude unnecessary fields, improving speed and reducing database load.</p>
+        </div>
+
+        <!-- Card 3: Example -->
+        <div class="card">
+            <div class="example">
+                <h3>Example: Fetching Only What You Need</h3>
+                <p>Suppose you have a <code>Person</code> model and only need <code>id</code> and <code>first_name</code> fields. Using Django's <code>raw()</code> method, you can specify just the fields you want:</p>
+                <div class="code-block">
+                    <code>
+                        # Only fetches 'id' and 'first_name' fields from the Person model<br>
+                        people = Person.objects.raw("SELECT id, first_name FROM myapp_person")
+                    </code>
+                </div>
+                <p>This returns a deferred model instance where only queried fields like <code>first_name</code> are initially loaded.</p>
+            </div>
+        </div>
+
+        <!-- Card 4: On-Demand Field Loading -->
+        <div class="card">
+            <h2>On-Demand Field Loading in Action</h2>
+            <p>Observe how deferred fields work in a loop. Here, <code>last_name</code> loads separately when accessed:</p>
+            <div class="code-block">
+                <code>
+                    for p in Person.objects.raw("SELECT id, first_name FROM myapp_person"):<br>
+                        &nbsp;&nbsp;print(p.first_name)  # Loaded in the initial query<br>
+                        &nbsp;&nbsp;print(p.last_name)   # Loaded on demand when accessed
+                </code>
+            </div>
+            <p>While it may seem like both fields were retrieved together, this actually triggers multiple queries: one for the initial data and additional ones for each deferred <code>last_name</code> access.</p>
+        </div>
+
+        <!-- Card 5: Tip -->
+        <div class="card tip">
+            <strong>Key Rule:</strong> Always include the primary key in your query! Without it, Django won't recognize individual instances, causing a <code>FieldDoesNotExist</code> error.
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Ruth Ewho 2024 Optimizing Django Query Performance - All Rights Reserved.</p>
+        <p>Need more tips? <a href="#">Subscribe to our newsletter</a> for the latest on Django and Python development.</p>
+    </footer>
+
+</body>
+</html>
+
+
+

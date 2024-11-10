@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words vs Actions - Interactive Comparison</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            width: 80%;
+            max-width: 1000px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #2c2c2c;
+            font-weight: 600;
+            grid-column: span 2;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            border-radius: 12px;
+            font-size: 1.2em;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .box.words {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .box.actions {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .box h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .box p {
+            margin: 10px 0;
+        }
+
+        .tagline {
+            font-size: 1.5em;
+            font-weight: 400;
+            color: #333;
+            margin-top: 40px;
+            grid-column: span 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .tagline span {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        footer {
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .tagline {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><footer>
+            <p>&copy; Ruth Ewho</p>
+        </footer>Words vs Actions
+            </h1>
+
+
+        <div class="box words">
+            <h2>Words</h2>
+            <p><strong>"I love you."</strong></p>
+            <p>Words can sound comforting, but often lack the substance needed to prove true feelings.</p>
+        </div>
+
+        <div class="box actions">
+            <h2>Actions</h2>
+            <p><strong>Consistently showing care and support without saying a word.</strong></p>
+            <p>True love is displayed in daily actions, not just in words. Actions carry more weight because they are consistent and honest.</p>
+        </div>
+
+        <div class="tagline">
+            <p>Words can make promises, but <span>actions</span> reveal intentions. Let actions do the talking.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

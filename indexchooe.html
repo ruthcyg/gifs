@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choosing the Right Indexes: A Fun Guide to Speeding Up Your Queries!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2980b9; /* Trust and reliability */
+            margin-bottom: 20px;
+        }
+
+        .subheading {
+            font-size: 1.2rem;
+          
+            margin-bottom: 40px;
+        }
+
+        /* Create a 3-Grid Layout for the sections */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: #e67e22; /* Energetic orange */
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+          
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        /* Uniform Highlight Style */
+        .highlight {
+            background-color: #f39c12;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .call-to-action {
+            background-color: #2ecc71; /* Success Green */
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .call-to-action:hover {
+            background-color: #27ae60;
+        }
+
+        /* Fun Animation for Interactive Elements */
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+       
+    </style>
+</head>
+<body>
+
+    <h1>Choosing the Right Indexes for Lightning-Fast Queries  <br> Step By Step!</h1>
+   
+    <footer>
+        <p>&copy; Ruth Ewho.</p> 
+       </footer>
+
+    <div class="grid-container">
+        <div class="section">
+            <h2 class="pulse">Frequently Queried Columns</h2>
+            <p>When you often use certain columns in <strong>WHERE</strong> clauses or <strong>JOIN</strong> conditions, it’s time to consider indexing them. Why? Because indexes help the database find the data without scanning the entire table, saving time and resources.</p>
+            <div class="highlight">💡 Pro Tip: Always index columns that are frequently searched or used in joins!</div>
+        </div>
+
+        <div class="section">
+            <h2 class="pulse">Selectivity: The Golden Rule</h2>
+            <p>Highly <strong>selective columns</strong> (e.g., primary keys) tend to provide the biggest benefits from indexing.<br> These are the columns with unique values,<br> so the database can quickly narrow down to the right row.</p>
+            <div class="highlight">🔥 High selectivity = Faster results! 🔥</div>
+        </div>
+
+        <div class="section">
+            <h2 class="pulse">Performance Testing: Make Data-Driven Decisions</h2>
+            <p>Don’t guess—test! Use profiling tools like <br><strong>EXPLAIN</strong> to find slow queries and identify which ones need indexing. By monitoring performance before and after indexing, you’ll see clear improvements.</p>
+            <div class="highlight">📊 Test your queries, then create indexes based on what’s slowing you down!</div>
+        </div>
+    </div>
+
+    <!-- Call to Action Button for More Engagement -->
+    <div class="call-to-action">Start Indexing Like a Pro!</div>
+
+    <!-- Footer Section -->
+
+
+</body>
+</html>
+
+
+
