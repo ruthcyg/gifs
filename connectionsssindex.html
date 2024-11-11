@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django SQL Tips - Context Managers & Stored Procedures</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: #1e1e2e;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 2rem;
+            color: #00e6e6;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: pulse 1.2s infinite alternate;
+        }
+
+        /* Container for Cards */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        /* Card Styling */
+        .card {
+            background: #2d2d3e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 16px rgba(0, 230, 230, 0.5);
+        }
+
+        /* Title and Emoji */
+        .card h2 {
+            font-size: 1.2rem;
+            color: #00e6e6;
+            display: flex;
+            align-items: center;
+        }
+
+        .emoji {
+            font-size: 1.5rem;
+            margin-right: 8px;
+        }
+
+        /* Tooltip/Modal for Extra Info */
+        .tooltip {
+            display: none;
+            position: absolute;
+            bottom: -160px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e1e2e;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 230, 230, 0.4);
+            z-index: 10;
+            width: 90%;
+            max-width: 280px;
+            font-size: 0.9rem;
+        }
+
+        .card:hover .tooltip {
+            display: block;
+        }
+
+        /* Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+<h1>💡 Django SQL Tips: Context <br> Managers & Stored Procedures 💡</h1>
+<footer>
+    <p>&copy; Ruth Ewho </p>
+</footer>
+
+<div class="container">
+    <!-- Context Managers -->
+
+    <div class="card">
+        <h2><span class="emoji">🚀</span> Boost Workflow with Context Managers</h2>
+        <p>Avoid memory leaks by auto-closing cursors with <code>with connection.cursor()</code>!</p>
+        <div class="tooltip">
+            Code without context managers can be messy. This approach keeps it clean:
+            <pre><code>with connection.cursor() as cursor:</code></pre>
+            Using `with` auto-closes the cursor after execution - no need for <code>.close()</code>!
+        </div>
+    </div>
+
+    <!-- Stored Procedures -->
+    <div class="card">
+        <h2><span class="emoji">🧙‍♂️</span> Calling Stored Procedures</h2>
+        <p>For complex SQL tasks, call stored procedures using <code>cursor.callproc()</code>.</p>
+        <div class="tooltip">
+            Stored procedures let you batch process on the DB side:
+            <pre><code>with connection.cursor() as cursor:
+    cursor.callproc("procedure_name", <br>[param1, param2])</code></pre>
+            This method keeps app code light and supercharged for high traffic!
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

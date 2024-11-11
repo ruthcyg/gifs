@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testing & Debugging with Annotations</title>
+<style>
+  /* General Body Styling */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #f4f6f9;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+
+  /* Glass Effect Container */
+  .card {
+    padding: 25px;
+    max-width: 400px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(12px);
+    animation: bounce 2s infinite;
+  }
+
+  /* Hover Animation */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  /* Title Styling */
+  .card h2 {
+    margin-top: 0;
+    color: #0056b3;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* List Styling */
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    background: rgba(0, 86, 179, 0.05);
+    border-left: 4px solid #0056b3;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+
+  /* Hover on List Items */
+  .card ul li:hover {
+    background: rgba(0, 86, 179, 0.15);
+  }
+
+  /* Icon for List Items */
+  .card ul li::before {
+    content: "✔";
+    color: #0056b3;
+    font-weight: bold;
+    margin-right: 8px;
+    font-size: 1.1em;
+  }
+
+  /* Footer Styling */
+  
+  footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+  .card-footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .card-footer a {
+    text-decoration: none;
+    color: #0056b3;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  /* Hover for Footer Link */
+  .card-footer a:hover {
+    color: #003d7a;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Testing & Debugging with Annotations    
+</h2>
+<footer>
+    <p>&copy; Ruth Ewho </p>
+</footer>
+  <ul>
+    <li>Inspect SQL with <code>.query</code> for annotation accuracy.</li>
+    <li>Utilize <code>assertQuerysetEqual()</code> in unit tests.</li>
+    <li>Break down complex calculations to isolate logic.</li>
+    <li>Profile queries with Django Debug Toolbar & SQL <code>EXPLAIN</code>.</li>
+  </ul>
+  <div class="card-footer">
+    <footer>
+        <p>&copy; Ruth Ewho 2024 Advanced Annotations in Django. All Rights Reserved.</p>
+    </footer>
+
+    <a href="#">Learn More</a>
+  </div>
+</div>
+
+</body>
+</html>
+

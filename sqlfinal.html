@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Level Tips for Database Performance</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fdfbfb, #ebedee);
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #005b96;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Tips Container */
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Individual Tip Card */
+        .tip {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .tip:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animated Tooltip */
+        .tooltip {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #007acc;
+            color: #fff;
+            font-size: 0.9rem;
+            width: 200px;
+            text-align: center;
+        }
+
+        .tip:hover .tooltip {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 Next-Level Tips for Database Performance 🚀</h1>
+
+    <!-- Tip 1 -->
+    <div class="tip" onclick="showTip(this)">
+        <h2>Use Transactions Wisely</h2>
+        <p>Wrap updates in transactions to avoid partial updates.</p>
+        <div class="tooltip">🤓 Transactions keep your data consistent!</div>
+    </div>
+
+    <!-- Tip 2 -->
+    <div class="tip" onclick="showTip(this)">
+        <h2>Monitor Connections</h2>
+        <p>Watch out for lingering connections using up memory.</p>
+        <div class="tooltip">🕵️ Detect idle connections early to save resources!</div>
+    </div>
+
+    <!-- Tip 3 -->
+    <div class="tip" onclick="showTip(this)">
+        <h2>Optimize with Indexes</h2>
+        <p>Index key columns to boost performance on heavy read queries.</p>
+        <div class="tooltip">📈 Indexing makes data retrieval a breeze!</div>
+    </div>
+
+    <!-- Tip 4 -->
+    <div class="tip" onclick="showTip(this)">
+        <h2>Database Replication</h2>
+        <p>Replicate read-heavy data across servers to scale up.</p>
+        <div class="tooltip">🌍 Keep the main database fast and responsive!</div>
+    </div>
+</div>
+
+<script>
+    function showTip(element) {
+        const tooltip = element.querySelector('.tooltip');
+        tooltip.style.opacity = '1';
+        setTimeout(() => {
+            tooltip.style.opacity = '0';
+        }, 3000); // Tooltip fades after 3 seconds
+    }
+</script>
+
+</body>
+</html>

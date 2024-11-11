@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Tips for Libraries</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .card h2 {
+      font-size: 1.8em;
+      color: #3498db;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card ul li {
+      background: #ecf6fc;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      border-left: 5px solid #3498db;
+      transition: background 0.3s ease;
+    }
+
+    .card ul li:hover {
+      background: #d5eaf7;
+    }
+
+    .card ul li strong {
+      font-weight: bold;
+      color: #3498db;
+    }
+
+    .card-footer {
+      margin-top: 30px;
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .card-footer a {
+      text-decoration: none;
+      color: #3498db;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .card-footer a:hover {
+      color: #2980b9;
+    }
+    footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Security Tips for Libraries</h2>
+    <footer>
+        <p>&copy; Ruth Ewho </p>
+    </footer>
+    <ul>
+      <li>
+        <strong>Avoid String Interpolation:</strong> This can lead to SQL injection vulnerabilities when user input is directly embedded into queries.
+      </li>
+      <li>
+        <strong>Use Parameterized Queries:</strong> Always use parameterized queries with libraries like psycopg2 or MySQLdb to safely execute SQL commands.
+      </li>
+      <li>
+        <strong>Why It Matters:</strong> Parameterized queries ensure user input is treated as data, preventing the execution of malicious code.
+      </li>
+    </ul>
+    <div class="card-footer">
+      <a href="#"> Learn More About SQL Injection Protection</a>
+    </div>
+    <footer>
+        <p>&copy; Ruth Ewho </p>
+    </footer>
+  </div>
+
+</body>
+</html>
+
+
+
+

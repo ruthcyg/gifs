@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raw SQL Execution in Django</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+        }
+        footer {
+            text-align: center;
+          
+            font-size: 0.9rem;
+            color: #1b0517;
+        }
+
+        /* Top Footer */
+        .top-footer {
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+        .top-footer p {
+            margin: 0;
+        }
+
+        /* Main Content */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin-top: 10px;  /* Adjust space for top footer */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Title */
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+          
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            color: #2980b9;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .card ul li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .card ul li span {
+            font-weight: bold;
+            color: #16a085;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #2980b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background: #1abc9c;
+        }
+
+        /* Bottom Footer */
+        .bottom-footer {
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .bottom-footer p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .card h2 {
+                font-size: 1.5rem;
+            }
+
+            .card ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Footer -->
+
+
+<!-- Main Content -->
+<h1> <p>Raw SQL Execution in Django | Stay Secure & Efficient</p></h1>
+<footer>
+    <p>&copy; Ruth Ewho </p>
+</footer>
+<div class="container">
+
+
+    <!-- Custom SQL Execution Card -->
+    <div class="card">
+        <h2>Going Hands-On: Custom SQL Execution</h2>
+        <ul>
+            <li><span>Action:</span> Updating patient diagnosis data on the fly.</li>
+            <li><span>Key Tip:</span> Always use parameterized queries to avoid SQL injection.</li>
+            <li><span>Example:</span> Use `cursor.execute()` to securely execute updates.</li>
+            <li><span>Pro Tip:</span> Use placeholders (%s) for variables to maintain security.</li>
+        </ul>
+        <a href="#" class="button">Learn More</a>
+    </div>
+
+    <!-- Multi-Database Management Card -->
+    <div class="card">
+        <h2>Scaling with Multi-Database Management</h2>
+        <ul>
+            <li><span>Action:</span> Route queries to multiple databases for scalability.</li>
+            <li><span>Key Tip:</span> Use Django’s `connections` to specify databases.</li>
+            <li><span>Example:</span> Separate read-heavy queries (medications) from write-heavy ones (visits).</li>
+            <li><span>Pro Tip:</span> Use `connections['db_name']` for specific database routing.</li>
+        </ul>
+        <a href="#" class="button">Learn More</a>
+    </div>
+
+    <!-- Supercharge Queries with Named Tuples -->
+    <div class="card">
+        <h2>Supercharge Your Queries with Named Tuples</h2>
+        <ul>
+            <li><span>Action:</span> Handle large result sets with ease.</li>
+            <li><span>Key Tip:</span> Use `dictfetchall()` or `namedtuplefetchall()` for clean results.</li>
+            <li><span>Example:</span> Return results as dictionaries or named tuples for easy access.</li>
+            <li><span>Pro Tip:</span> Named tuples offer flexible attribute-based access to your data.</li>
+        </ul>
+        <a href="#" class="button">Learn More</a>
+    </div>
+
+</div>
+
+<!-- Bottom Footer -->
+
+
+</body>
+</html>

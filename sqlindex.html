@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Security Practices</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .best-practices {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SQL Execution Security Best Practices</h1>
+    </header>
+    <footer>
+        <p>&copy;Ruth Ewho</p>
+    </footer>
+    <section class="best-practices">
+        <h2>Key Security Tips:</h2>
+        <ul>
+            <li><strong>Limit Database Privileges:</strong> Only grant necessary permissions.</li>
+            <li><strong>Escape Parameters:</strong> Use placeholders (%s) to avoid SQL injection.</li>
+            <li><strong>Separate Read/Write Connections:</strong> Use different connections for reading and writing.</li>
+            <li><strong>Monitor for Anomalies:</strong> Log SQL queries and detect unusual activity.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Healthcare App</p>
+    </footer>
+
+    <script>
+        // Example secure query with parameterized execution
+        function executeSecureSQL(query, params) {
+            console.log(`Executing SQL: ${query} with parameters:`, params);
+        }
+
+        // Example usage of a secure query
+        executeSecureSQL("SELECT * FROM patients WHERE id = %s", [123]);
+    </script>
+</body>
+</html>

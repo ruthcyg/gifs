@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Level Database Performance Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fcd34d;
+            text-shadow: 0 0 10px #ffdd57;
+        }
+
+        .tip {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tip:hover {
+            transform: scale(1.05);
+        }
+
+        .tip .title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tip .title span {
+            margin-right: 10px;
+        }
+
+        .tip .content {
+            font-size: 1rem;
+            opacity: 0;
+            max-height: 0;
+            transition: opacity 0.4s, max-height 0.4s;
+        }
+
+        .tip.active .content {
+            opacity: 1;
+            max-height: 200px;
+        }
+
+        /* Floating confetti animation */
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-100vh);
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffdd57;
+            opacity: 0.7;
+            animation: float 3s linear infinite;
+            transform: translateY(100vh);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ Next-Level Database Performance Tips ✨</h1>
+    <footer>
+        <p>&copy; Ruth Ewho </p>
+    </footer>
+
+    <div class="tip" onclick="toggleContent(this)">
+        <div class="title">
+            <span>📝</span> Use Transactions Wisely
+        </div>
+        <div class="content">Wrap multiple table updates in a transaction to avoid partial updates in case of errors.</div>
+    </div>
+
+    <div class="tip" onclick="toggleContent(this)">
+        <div class="title">
+            <span>👀</span> Monitor Connections
+        </div>
+        <div class="content">Keep an eye on lingering connections, as each one consumes memory and can slow down performance.</div>
+    </div>
+
+    <div class="tip" onclick="toggleContent(this)">
+        <div class="title">
+            <span>⚡</span> Optimize with Indexes
+        </div>
+        <div class="content">Speed up read-heavy queries by indexing frequently accessed columns.</div>
+    </div>
+
+    <div class="tip" onclick="toggleContent(this)">
+        <div class="title">
+            <span>🔀</span> Database Replication for Scalability
+        </div>
+        <div class="content">Distribute read-heavy queries across multiple servers with replication, freeing up resources for critical writes.</div>
+    </div>
+</div>
+
+<script>
+    function toggleContent(element) {
+        element.classList.toggle('active');
+    }
+
+    // Confetti effect
+    for (let i = 0; i < 30; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        document.body.appendChild(confetti);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Performance E-commerce Management Tips</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 2.2rem;
+            color: #005b96;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Key Points Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Key Point Card */
+        .card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Card Title */
+        .card h2 {
+            font-size: 1.4rem;
+            color: #007acc;
+            margin-bottom: 10px;
+        }
+
+        /* Card Content */
+        .card p {
+            font-size: 1rem;
+            color: #444;
+        }
+
+        /* Code Snippet */
+        pre {
+            background: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #005b96;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>High-Performance Tips</h1>
+<footer>
+    <p>&copy; Ruth Ewho </p>
+</footer>
+
+<div class="container">
+    <!-- Inventory Management Card -->
+    <div class="card">
+        <h2>📦 Real-Time Inventory Management</h2>
+        <p>During high-traffic events, use stored procedures to update inventory counts in batches, keeping response times fast and your database efficient.</p>
+      
+    </div>
+
+    <!-- Customer Session Management Card -->
+    <div class="card">
+        <h2>👥 Manage Customer Data Efficiently</h2>
+        <p>To keep your platform stable during peak loads, call stored procedures that handle customer sessions or cart data directly in the database.</p>
+        <p>This reduces app server load, leaving more resources for new users and faster responses.</p>
+    </div>
+
+    <!-- Distributed Load Management Card -->
+    <div class="card">
+        <h2>🚀 Optimize for Peak Loads</h2>
+        <p>Direct SQL execution via stored procedures distributes load and minimizes bottlenecks. This approach is key for high-performance systems, especially in e-commerce during major sales.</p>
+    </div>
+</div>
+
+</body>
+</html>

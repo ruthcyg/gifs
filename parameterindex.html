@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Usage of Parameters in Django</title>
+<style>
+  /* Base Styling */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #f4f4f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+
+  /* Card Container */
+  .card {
+    max-width: 700px;
+    padding: 30px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #3498db;
+    position: relative;
+  }
+
+  /* Title */
+  .card h2 {
+    color: #3498db;
+    margin-top: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /* Key Points List */
+  .card ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .card ul li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: rgba(52, 152, 219, 0.1);
+    border-left: 5px solid #3498db;
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: background 0.3s ease-in-out;
+  }
+
+  /* Hover Effect */
+  .card ul li:hover {
+    background: rgba(52, 152, 219, 0.2);
+  }
+
+  /* Key Icon */
+  .card ul li::before {
+    content: "🔒";
+    margin-right: 15px;
+    font-size: 1.3em;
+    color: #3498db;
+  }
+
+  /* Code Block Styling */
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    background: #f9f9f9;
+    padding: 3px 8px;
+    border-radius: 5px;
+    color: #e74c3c;
+  }
+
+  /* Footer */
+  .card-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 10px;
+    font-size: 0.95em;
+    color: #555;
+    border-top: 1px solid #ddd;
+  }
+
+  .card-footer a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .card-footer a:hover {
+    color: #2980b9;
+  }
+  footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Advanced Usage of Parameters with `params` in Django's `raw()` Queries</h2>
+  <footer>
+    <p>&copy; Ruth Ewho </p>
+</footer>
+  <ul>
+    <li><strong>Parameterized Query with Safe Value:</strong> Avoid hardcoding values in queries to prevent SQL injection. Example: <code>Person.objects.raw("SELECT * FROM myapp_person WHERE last_name = %s", [lname])</code></li>
+    <li><strong>Multiple Parameters with Dictionary Style:</strong> Use dictionary-style placeholders to manage multiple parameters easily. Example: <code>Person.objects.raw("SELECT * FROM myapp_person WHERE first_name = %(first)s AND last_name = %(last)s", {"first": "John", "last": "Doe"})</code></li>
+    <li><strong>Dynamic Parameter Addition:</strong> You can easily add or remove parameters in a dictionary, especially useful for optional filters or user inputs. Example with multiple parameters: <code>Person.objects.raw("SELECT * FROM myapp_person WHERE first_name = %(first)s AND last_name = %(last)s AND city = %(city)s", params)</code></li>
+  </ul>
+  <div class="card-footer">
+    <a href="#">   <footer>
+        <p>&copy; Ruth Ewho </p>
+    </footer> Learn More About Django Security Practices</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Tuning: Pro Tips for High-Speed Queries</title>
+    <style>
+        /* General Body and Layout */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #1b0517;
+        }
+
+        /* Grid Layout for Content */
+        .content {
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Card Style */
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: #2980b9;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            padding-left: 1.5em;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "•";
+            color: #2980b9;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .card .button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #2980b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .card .button:hover {
+            background: #1abc9c;
+        }
+
+        /* Highlight Pro Tip with Background Color */
+        .pro-tip {
+            background-color: #f7c3ff;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #9b59b6;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <h1>Performance Tuning: Pro Tips for High-Speed Queries</h1>
+</header>
+<footer>
+    <p>&copy; Ruth Ewho </p>
+</footer>
+
+<!-- Main Content Section -->
+<div class="content">
+    <!-- Parameterization Card -->
+    <div class="card">
+        <h2>Parameterize</h2>
+        <ul>
+            <li>Guard against SQL injection by always using parameterized queries.</li>
+            <li>Never directly insert values into queries; always use placeholders (%s).</li>
+        </ul>
+        <div class="pro-tip">Pro Tip: Critical for apps handling sensitive data like EMRs (Electronic Medical Records).</div>
+    </div>
+
+    <!-- Leverage Indexes Card -->
+    <div class="card">
+        <h2>Leverage Indexes</h2>
+        <ul>
+            <li>Index frequently accessed columns to reduce query times.</li>
+            <li>Use indexes for columns involved in WHERE, JOIN, and ORDER BY clauses.</li>
+        </ul>
+        <div class="pro-tip">Pro Tip: Too many indexes? It might slow down inserts/updates, balance wisely.</div>
+    </div>
+
+    <!-- Cache Data Card -->
+    <div class="card">
+        <h2>Cache It</h2>
+        <ul>
+            <li>If you query frequently, caching is your best friend.</li>
+            <li>Cache data such as patient histories or prescription info to reduce query load.</li>
+        </ul>
+        <div class="pro-tip">Pro Tip: Cache expiry should be set carefully to ensure you don’t serve stale data.</div>
+    </div>
+
+    <!-- Batch Data Writes Card -->
+    <div class="card">
+        <h2>Batch Data Writes</h2>
+        <ul>
+            <li>Batch multiple INSERTs or UPDATEs in a single query to reduce transaction overhead.</li>
+        </ul>
+        <div class="pro-tip">Pro Tip: Less individual queries means fewer round-trips to the database.</div>
+    </div>
+
+    <!-- EMR Scheduling Card -->
+    <div class="card">
+        <h2>EMR Pro Tip</h2>
+        <ul>
+            <li>Schedule non-critical queries (e.g., monthly patient reports) for off-peak hours.</li>
+        </ul>
+        <div class="pro-tip">Pro Tip: Use cron jobs or task schedulers to automate these jobs during the night.</div>
+    </div>
+</div>
+
+<!-- Footer Section -->
+
+</body>
+</html>
+

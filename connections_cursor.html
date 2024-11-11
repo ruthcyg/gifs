@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Django Connections & Cursors</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: #1e1e2e;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Title */
+        h1 {
+            font-size: 2rem;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: pulse 1s infinite alternate;
+        }
+
+        /* Key Points Grid */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        /* Card Styling */
+        .card {
+            background: #2d2d3e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Title and Emoji */
+        .emoji {
+            font-size: 1.5rem;
+            margin-right: 8px;
+        }
+        .card h2 {
+            font-size: 1.2rem;
+            color: #00d4ff;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Tooltip/Modal for Extra Info */
+        .tooltip {
+            display: none;
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e1e2e;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 212, 255, 0.3);
+            z-index: 10;
+            width: 100%;
+            max-width: 250px;
+            font-size: 0.9rem;
+        }
+
+        .card:hover .tooltip {
+            display: block;
+        }
+
+        /* Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🚀 Mastering Django's Connections & Cursors 🚀</h1>
+<footer>
+    <p>&copy; Ruth Ewho </p>
+</footer>
+
+<div class="container">
+    <!-- Key Points as Cards -->
+
+    <div class="card">
+        <h2><span class="emoji">⚡</span> Direct SQL Execution</h2>
+        <p>Connections and cursors empower raw SQL execution, providing full control for complex tasks!</p>
+        <div class="tooltip">Raw SQL with <code>cursor.execute()</code> speeds up data handling for advanced use cases. Use it when ORM is too slow!</div>
+    </div>
+
+    <div class="card">
+        <h2><span class="emoji">🛡️</span> Safe Parameterization</h2>
+        <p>Use <code>%s</code> placeholders to avoid SQL injection and ensure secure execution.</p>
+        <div class="tooltip">Never insert user inputs directly into SQL! Placeholders like <code>%s</code> auto-escape inputs to prevent SQL injection.</div>
+    </div>
+
+    <div class="card">
+        <h2><span class="emoji">🔄</span> Placeholder Consistency</h2>
+        <p>Django loves <code>%s</code> placeholders, so stick with them. It’s your ORM’s best friend!</p>
+        <div class="tooltip">Using <code>%s</code> keeps code safe, readable, and reduces bugs. Different DBs, same syntax!</div>
+    </div>
+
+    <div class="card">
+        <h2><span class="emoji">📊</span> Efficient Data Access</h2>
+        <p>Manage read & write permissions separately for smooth, secure access.</p>
+        <div class="tooltip">Use different connections for reading and writing to avoid over-exposing your database.</div>
+    </div>
+
+    <div class="card">
+        <h2><span class="emoji">👀</span> Logging & Monitoring</h2>
+        <p>Track activities to catch issues before they catch you!</p>
+        <div class="tooltip">Implement monitoring to detect anomalies early, a must for data-sensitive apps like healthcare.</div>
+    </div>
+</div>
+
+</body>
+</html>

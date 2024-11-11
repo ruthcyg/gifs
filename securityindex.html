@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Best Practices in Django</title>
+<style>
+  /* Base Styling */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #f4f4f9;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+
+  /* Card Container */
+  .card {
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+
+  /* Title */
+  .card h2 {
+    color: #4caf50;
+    margin-top: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Key Points List */
+  .card ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .card ul li {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background 0.3s;
+  }
+
+  /* Hover Effect */
+  .card ul li:hover {
+    background: #f0f0f0;
+  }
+
+  /* Key Icon */
+  .card ul li::before {
+    content: "🔐";
+    margin-right: 12px;
+    font-size: 1.1em;
+    color: #4caf50;
+  }
+
+  /* Footer */
+  .card-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    font-size: 0.9em;
+    color: #555;
+    border-top: 1px solid #ddd;
+  }
+
+  .card-footer a {
+    text-decoration: none;
+    color: #4caf50;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .card-footer a:hover {
+    color: #388e3c;
+  }
+  footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2> Security Best Practices</h2>
+  <footer>
+    <p>&copy; Ruth Ewho </p>
+</footer>
+  <ul>
+    <li><strong>Input Validation and Sanitization :</strong> Ensure inputs conform to expected formats and types, preventing unexpected values.</li>
+    <li><strong>Consistent Use of Parameterized Queries :</strong> Always use parameterized queries, even with trusted input, for ongoing protection.</li>
+    <li><strong>Limit Raw SQL Usage :</strong> Leverage Django ORM for secure and efficient queries; use <code>raw()</code> only when necessary.</li>
+  </ul>
+  <div class="card-footer">
+    <a href="#">Explore More Best Practices By Ruth Ewho</a>
+  </div>
+</div>
+
+</body>
+</html>
+

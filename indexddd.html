@@ -1,0 +1,348 @@
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Song for You, For Us</title>
+    <style>
+        /* General body styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            background-color: #121212;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+        }
+
+        /* Background with glowing song emojis */
+        body::before {
+            content: '🎵';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: repeat;
+            background-size: 50px 50px;
+            z-index: -2;
+            animation: backgroundMove 10s linear infinite;
+            opacity: 0.15;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* Heartbeat animation */
+       /* Heartbeat animation */
+.heart {
+    font-size: 4rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    color: neonpink;
+
+    z-index: 14; /* Ensure the heart is behind the text */
+}
+
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        /* Neon Glow Text for Title */
+        h1 {
+            font-size: 4.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin: 20px;
+            color: #ffffff;
+            animation: neonGlow 1.5s ease-in-out infinite alternate;
+            text-shadow: 0 0 15px rgba(255, 0, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.8);
+        }
+
+        @keyframes neonGlow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 0, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.8);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 0, 255, 1), 0 0 40px rgba(0, 255, 255, 1);
+            }
+        }
+
+        /* Floating neon emoji confetti */
+        .confetti {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            animation: confetti 2s ease-in-out infinite;
+        }
+
+        @keyframes confetti {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(80px, 80px) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(160px, 160px) rotate(360deg);
+            }
+        }
+
+        /* Floating futuristic emojis */
+        .emoji {
+            position: absolute;
+            font-size: 4rem;
+            animation: float 5s ease-in-out infinite;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .emoji.people {
+            top: 15%;
+            left: 10%;
+            animation-duration: 6s;
+        }
+
+        .emoji.love {
+            top: 25%;
+            left: 50%;
+            animation-duration: 7s;
+        }
+
+        .emoji.music {
+            top: 50%;
+            left: 30%;
+            animation-duration: 8s;
+        }
+
+        .emoji.dance {
+            top: 60%;
+            left: 60%;
+            animation-duration: 5s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Button styling */
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #3b3bff;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: 2px solid #3b3bff;
+        }
+
+        .button:hover {
+            background-color: #4b4bff;
+            transform: scale(1.1);
+        }
+
+        /* Centered content */
+        .content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeIn 3s ease-out;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Confetti containers with dancing emojis --
+    <div class="confetti" style="top: 10%; left: 10%;">🕺</div>
+    <div class="confetti" style="top: 20%; left: 30%;">💃</div>
+    <div class="confetti" style="top: 30%; left: 50%;">👨</div>
+    <div class="confetti" style="top: 50%; left: 60%;">👩</div>
+    <div class="confetti" style="top: 70%; left: 40%;">👦</div>
+    <div class="confetti" style="top: 80%; left: 70%;">👧</div>
+    <div class="confetti" style="top: 90%; left: 80%;">👩‍👩‍👧‍👦</div>
+
+    <!-- Floating emojis --
+    <div class="emoji people">👨‍👩‍👧‍👦</div>
+    <div class="emoji love">❤️</div>
+    <div class="emoji music">🎶</div>
+    <div class="emoji dance">💃</div>
+
+    <!-- Centered container for title and button --
+    <div class="content">
+        <h1>A Song for You, For Us 🎶</h1>
+        <div class="heart">❤️</div>
+      
+    </div>
+    
+
+    <!-- Beating heart emoji --
+
+
+</body>
+</html>-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Song for You, For Us</title>
+    <style>
+        /* General Body and Background */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f4a7a7, #5a89d7);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Centering the text */
+        .container {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 3s ease;
+        }
+
+        /* Keyframe for fading in */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Styling the title */
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 3px;
+            margin: 0;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Pulse animation for the text */
+        @keyframes pulse {
+            0% { transform: scale(1); color: #fff; }
+            50% { transform: scale(1.1); color: #f0f; }
+            100% { transform: scale(1); color: #fff; }
+        }
+
+        /* Floating stars background effect */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: starsAnim 30s infinite linear;
+            z-index: 1;
+        }
+
+        @keyframes starsAnim {
+            0% { background-position: 0 0; }
+            100% { background-position: 500px 500px; }
+        }
+
+        /* Interactive heart animation */
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transform: rotate(45deg);
+            opacity: 0;
+            animation: heartBounce 2s ease-out infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .heart:before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 50px;
+            top: 0;
+        }
+
+        @keyframes heartBounce {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating stars background -->
+    <div class="stars"></div>
+
+    <!-- Centered container with animated text -->
+    <div class="container">
+        <h1 id="song-title">A Song for You, For Us</h1>
+    </div>
+
+    <!-- Interactive heart element -->
+    <div class="heart"></div>
+
+    <script>
+        // Add some fun mouse interaction for the title
+        const title = document.getElementById('song-title');
+
+        title.addEventListener('mousemove', (event) => {
+            const x = event.clientX / window.innerWidth;
+            const y = event.clientY / window.innerHeight;
+            title.style.textShadow = `${x * 50}px ${y * 50}px 5px rgba(0, 0, 0, 0.7)`;
+        });
+    </script>
+
+</body>
+</html>
+

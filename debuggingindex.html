@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging and Testing Tips for Complex Queries</title>
+    <style>
+        /* Base Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #333;
+        }
+
+        /* Card Container */
+        .card {
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #3498db;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Title */
+        .card h2 {
+            color: #3498db;
+            text-align: center;
+            font-size: 2em;
+            margin-top: 0;
+        }
+
+        /* List Styling */
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            padding: 15px;
+            margin-bottom: 12px;
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 5px solid #3498db;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .card ul li:hover {
+            background: rgba(52, 152, 219, 0.2);
+        }
+
+        .card ul li::before {
+            content: "⚠️";
+            margin-right: 10px;
+            color: #e67e22;
+        }
+
+        /* Footer Styling */
+        .card-footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            font-size: 0.95em;
+            color: #555;
+            border-top: 1px solid #ddd;
+        }
+
+        .card-footer a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .card-footer a:hover {
+            color: #2980b9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                padding: 15px;
+            }
+
+            .card h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Debugging and Testing Complex Queries</h2>
+    <ul>
+        <li><strong>Log Queries:</strong> Use Django's query logging to monitor raw() queries for debugging.</li>
+        <li><strong>Test Edge Cases:</strong> Ensure queries handle special characters, empty strings, and boundary numbers.</li>
+        <li><strong>Inspect Results:</strong> Verify that complex SQL outputs match expectations to avoid subtle issues.</li>
+    </ul>
+    <div class="card-footer">
+        <a href="#" onclick="alert('Key Takeaway: Prioritize security with parameterized queries!')">Key Takeaway</a>
+    </div>
+
+    <h2>ORM Security and Additional Tips</h2>
+    <ul>
+        <li><strong>Input Validation:</strong> Always ensure user input matches the expected format.</li>
+        <li><strong>Output Encoding:</strong> Prevent XSS by encoding dynamic content when rendering in HTML.</li>
+        <li><strong>Error Handling:</strong> Avoid exposing detailed database errors to prevent exploitation.</li>
+    </ul>
+
+    <h2>Performance and Testing</h2>
+    <ul>
+        <li><strong>Compare Performance:</strong> Use raw SQL only when necessary, as Django ORM optimizations often outperform raw queries.</li>
+        <li><strong>Unit Tests:</strong> Test individual raw SQL queries with mock data.</li>
+        <li><strong>Integration Tests:</strong> Ensure raw SQL queries interact properly within the full application context.</li>
+    </ul>
+</div>
+
+</body>
+</html>
+

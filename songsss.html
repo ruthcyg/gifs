@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Song for You, For Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #ff7f50;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .line {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .line:hover {
+            transform: scale(1.05);
+            color: #ff4500;
+        }
+
+        .emoji {
+            font-size: 1.5rem;
+        }
+
+        .fade-in {
+            animation: fadeIn 3s ease-in;
+        }
+
+        /* Keyframes for fading in */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff7f50;
+            animation: fall 5s infinite;
+            opacity: 0.8;
+            border-radius: 50%;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>A Song for You, For Us 🎶</h1>
+
+    <p class="line"><span class="emoji">💪</span> To the men who carry burdens unseen,</p>
+    <p class="line"><span class="emoji">✨</span> Pushing through each day, chasing dreams,</p>
+    <p class="line"><span class="emoji">🛠️</span> You work, you strive, you do your part,</p>
+    <p class="line"><span class="emoji">❤️</span> But don’t forget to care for your heart.</p>
+
+    <p class="line"><span class="emoji">🔥</span> The world asks you to stand strong, to fight,</p>
+    <p class="line"><span class="emoji">🌙</span> To keep the fire burning, through day and night,</p>
+    <p class="line"><span class="emoji">👤</span> But you’re not just a role, not just a name,</p>
+    <p class="line"><span class="emoji">🙌</span> You’re a person too—don’t feel the shame.</p>
+
+    <p class="line"><span class="emoji">🌺</span> And to the women, the quiet warriors, too,</p>
+    <p class="line"><span class="emoji">⚖️</span> Balancing love and work, always staying true.</p>
+    <p class="line"><span class="emoji">💖</span> You nurture, you lead, you give all you’ve got,</p>
+    <p class="line"><span class="emoji">✨</span> But remember, your worth isn’t tied to the lot.</p>
+
+    <p class="line"><span class="emoji">💫</span> The world may tell you to bend and break,</p>
+    <p class="line"><span class="emoji">🕊️</span> To put everyone else first, for their sake,</p>
+    <p class="line"><span class="emoji">🎤</span> But your dreams, your voice, they matter too,</p>
+    <p class="line"><span class="emoji">🚫</span> Never let anyone silence you.</p>
+
+    <p class="line"><span class="emoji">🤝</span> Together, we rise, through struggles and strife,</p>
+    <p class="line"><span class="emoji">🏗️</span> Chasing our dreams, building our life.</p>
+    <p class="line"><span class="emoji">💑</span> Men and women, we all share the fight,</p>
+    <p class="line"><span class="emoji">🌍</span> For love, for peace, for what’s right.</p>
+
+    <p class="line"><span class="emoji">💨</span> So, take a moment, step back and breathe,</p>
+    <p class="line"><span class="emoji">🌅</span> You’re not alone in this journey, you see.</p>
+    <p class="line"><span class="emoji">🔥</span> No matter the work, the grind, the fight,</p>
+    <p class="line"><span class="emoji">💫</span> Your value is more than what you give tonight.</p>
+
+    <p class="line"><span class="emoji">🌠</span> For we are people, with hopes and dreams,</p>
+    <p class="line"><span class="emoji">🌈</span> Not just roles or tasks or what it seems.</p>
+    <p class="line"><span class="emoji">💖</span> Let’s honor ourselves, our worth, our grace,</p>
+    <p class="line"><span class="emoji">🌟</span> And embrace the love that lights our space.</p>
+</div>
+
+<script>
+    // Confetti animation
+    function createConfetti() {
+        for (let i = 0; i < 30; i++) {
+            let confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.body.appendChild(confetti);
+        }
+    }
+    createConfetti();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Case for Using Django's ORM</title>
+<style>
+  /* Base Styling */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #1e1e2f;
+    font-family: Arial, sans-serif;
+    color: #eaeaea;
+  }
+
+  /* Card Container */
+  .card {
+    max-width: 700px;
+    padding: 30px;
+    border-radius: 12px;
+    background: #282c34;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Title */
+  .card h2 {
+    color: #57e389;
+    margin-top: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
+  }
+
+  /* Key Points List */
+  .card ul {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+  }
+
+  .card ul li {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: #333844;
+    border-left: 4px solid #57e389;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: background 0.3s, border-color 0.3s;
+    position: relative;
+  }
+
+  /* Hover Effect */
+  .card ul li:hover {
+    background: #3a3f50;
+    border-color: #42d072;
+  }
+
+  /* Key Icon */
+  .card ul li::before {
+    content: "💡";
+    margin-right: 15px;
+    font-size: 1.3em;
+    color: #57e389;
+  }
+
+  /* Footer */
+  .card-footer {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    font-size: 0.9em;
+    color: #a9a9a9;
+    border-top: 1px solid #444;
+  }
+
+  .card-footer a {
+    text-decoration: none;
+    color: #57e389;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .card-footer a:hover {
+    color: #42d072;
+  }
+  footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>The Case for Using Django's ORM</h2>
+  <footer>
+    <p>&copy; Ruth Ewho </p>
+</footer>
+  <ul>
+    <li><strong>Django ORM Benefits :</strong> Automatically handles parameterization, escaping, and data validation, offering safer queries.</li>
+    <li><strong>ORM Query Example :</strong> <code>Person.objects.filter(last_name="Doe")</code> – Avoids raw SQL, enhancing security.</li>
+    <li><strong>When to Use raw() :</strong> Use raw SQL only when necessary, such as for specific cases like:</li>
+    <ul style="margin-left: 25px;">
+      <li><strong>Performance Optimization :</strong> Custom SQL queries may be faster for complex aggregations or subqueries.</li>
+      <li><strong>Database-Specific Features :</strong> Use unique features like PostgreSQL’s ARRAY fields when needed.</li>
+    </ul>
+  </ul>
+  <div class="card-footer">
+    <a href="#">  <footer>
+        <p>&copy; Ruth Ewho </p>
+    </footer>Learn More About Django ORM Best Practices</a>
+  </div>
+</div>
+
+</body>
+</html>
